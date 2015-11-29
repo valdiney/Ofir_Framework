@@ -26,7 +26,7 @@ else
 }
 
 # Verify if Controller exist in the folder 'controllers'
-if (file_exists("contollers/{$complete_name_controller}"))
+if (file_exists("controllers/{$complete_name_controller}"))
 {
 	# Include the Database Class
     require_once('system/database/Database.php');
@@ -44,7 +44,7 @@ if (file_exists("contollers/{$complete_name_controller}"))
 	require_once("system/View.php");
     
     # Include the Controller that will be called in the url
-	require_once("contollers/{$complete_name_controller}");
+	require_once("controllers/{$complete_name_controller}");
     
     # Instantiante the class Controller
     $controller_app = new $controller();
