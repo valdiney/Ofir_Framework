@@ -16,7 +16,7 @@ if (array_key_exists(1, $separator))
 else 
 {
     # Search for the 'home' Controller and 'method' 'index'
-	$controller_name = 'index.php?home=index';
+	$controller_name = '?home=index';
 
 	# Redirect to the first Controller
 	header("Location:{$controller_name}");
@@ -51,10 +51,13 @@ if (file_exists("controllers/{$complete_name_controller}"))
 
     # Verify if the Method exist in the Class controller
     if (method_exists($controller_app, $real_method_name)) {
+
+        # Call the methods of the controllers
     	$controller_app->$real_method_name();
+        
     } else {
     	echo 'This method not exist in this class';
     }
 } else {
-	echo 'This Contoller not exist';
+	echo 'This Contoller not exist in this application';
 }

@@ -6,14 +6,40 @@
 trait Helper
 {
 	/**
-	* Create the help Link_to
+	* Create the help 'link_to'
 
 	* @param  path : string : name of the controller and name of the method of the controller
     * @param  variables : string : variables and the values of the variables passed via 'HTTP-GET'
     */
+
 	public static function link_to($path = false, $variables = false)
 	{
-		# Transforming the operator '.' in operator '='
+		echo "?" . self::generating_perfect_url($path, $variables);
+    }
+    
+    /**
+	* Create the help 'action'
+
+	* @param  path : string : name of the controller and name of the method of the controller
+    * @param  variables : string : variables and the values of the variables passed via 'HTTP-GET'
+    */
+
+    public static function action($path = false, $variables = false)
+    {
+    	echo 'action="?' . self::generating_perfect_url($path, $variables) . '"';
+    }
+    
+    /**
+	* Create a perfect url that can be access the controllers and methods of the controllers
+	* like: index.php?user=update&id=1
+
+	* @param  path : string : name of the controller and name of the method of the controller
+    * @param  variables : string : variables and the values of the variables passed via 'HTTP-GET'
+    */
+
+    public static function generating_perfect_url($path = false, $variables = false)
+    {
+    	# Transforming the operator '.' in operator '='
 		$path = str_replace('.', '=', $path);
 
 		if ($variables) 
@@ -30,12 +56,12 @@ trait Helper
 			}
             
             # Print the path with the variables via 'HTTP-GET'
-			echo "index.php?{$path}{$variables_collection}";
+			return $path . $variables_collection;
 
 		} else {
 
 			# Print the path without variables via 'HTTP-GET'
-			echo "index.php?{$path}";
+			return $path;
 		}
     }
 }

@@ -6,10 +6,10 @@
 	<style>
 	body {
 		background:#cae5ee;
+		font-family:DengXian;
 	}
 
 	.description {
-		font-family: arial;
 		width:500px;
 		padding:10px;
 		border:1px solid silver;
@@ -20,11 +20,25 @@
 		background:white;
 		color:#333333;
 	}
+
+	.pre {
+		width:500px;
+		height:auto;
+		pading:0;
+		margin:auto;
+		border-radius:3px;
+		margin-top:10px;
+	}
 	</style>
 
-	<title><?php echo $page_title;?></title>
+	<title><?php echo $data['page_title'];?></title>
 </head>
 <body>
-	<h2 class="description"><?php echo $description;?></h2>
+	<h2 class="description"><?php echo $data['description'];?></h2>
+
+<section class="pre">
+  <script src="https://gist.github.com/valdiney/ad2b3e867cf581e99e5c.js"></script>
+</section>
+
 </body>
 </html>
