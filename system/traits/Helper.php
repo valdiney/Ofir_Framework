@@ -64,4 +64,19 @@ trait Helper
 			return $path;
 		}
     }
+    
+    /**
+    * This method is used for include css in the layout
+    *
+    * @param path : string : The folder and name of the css file
+    * @return void
+    */
+
+    public static function css($path = false)
+    {
+    	# Transforming the operator '.' in operator '='
+    	$path = str_replace('.', '/', $path);
+    	
+    	echo "<link rel='stylesheet' href='public/{$path}.css'></style>";
+    }
 }

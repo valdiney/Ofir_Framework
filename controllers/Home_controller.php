@@ -7,6 +7,7 @@ class Home extends Controller
     public function __construct()
     {
     	$this->view = new View();
+        $this->view->layout_name('default_layout');
     	$this->model = $this->load_model('user.User');
     }
 

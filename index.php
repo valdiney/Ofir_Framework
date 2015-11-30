@@ -54,7 +54,7 @@ if (file_exists("controllers/{$complete_name_controller}"))
 
         # Call the methods of the controllers
     	$controller_app->$real_method_name();
-        
+
     } else {
     	echo 'This method not exist in this class';
     }

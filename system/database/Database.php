@@ -26,13 +26,17 @@ class Database
             catch (PDOException $e)
             {
                 if ($e->getCode() == 2002) {
-                    echo "This Localhost not exist";
+                    echo "<b>Database configuration Error:</b> This Localhost not exist in this server";
+                    exit;
                 } elseif ($e->getCode() == 1049) {
-                    echo "This Database not exist";
+                    echo "<b>Database configuration Error:</b> This Database not exist in this server";
+                    exit;
                 } elseif ($e->getCode() == 1044) {
-                    echo "This Username not exist";
+                    echo "<b>Database configuration Error:</b> Database username not exist in this server";
+                    exit;
                 } elseif ($e->getCode() == 1045) {
-                    echo "Database Password are incorrect";
+                    echo "<b>Database configuration Error:</b> Database Password are incorrect";
+                    exit;
                 }
             }
         }
