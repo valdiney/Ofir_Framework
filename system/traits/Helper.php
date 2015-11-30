@@ -1,10 +1,14 @@
 <?php 
+require_once('String_helper.php');
+
 /**
 * This trait is used to work with some helpers to the application
 */
 
 trait Helper
 {
+    use String_helper;
+
 	/**
 	* Create the help 'link_to'
 
@@ -75,8 +79,14 @@ trait Helper
     public static function css($path = false)
     {
     	# Transforming the operator '.' in operator '='
-    	$path = str_replace('.', '/', $path);
-    	
+        $path = self::to_slash($path);
     	echo "<link rel='stylesheet' href='public/{$path}.css'></style>";
+    }
+
+    public static function script($path = false)
+    { 
+        # Transforming the operator '.' in operator '='
+        $path = self::to_slash($path);
+        echo "<script src='public/{$path}.js'></script>";
     }
 }

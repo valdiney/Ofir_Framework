@@ -1,6 +1,10 @@
 <?php 
+require_once('traits/String_helper.php');
+
 class View
 {
+	use String_helper;
+
 	# to receive the values passed to view
 	protected $data = array();
 
@@ -31,7 +35,7 @@ class View
 	public function make($view_name)
 	{   
 		# Transforming the operator '.' in operator '='
-		$view_name = str_replace('.', '/', $view_name);
+		$view_name = self::to_slash($view_name);
         
         # Passing the values to be used into the views
 		foreach ($this->get_data() as $key => $itens) {
