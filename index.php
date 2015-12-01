@@ -8,10 +8,18 @@ if (array_key_exists(1, $separator))
     $the_controller_name = explode('=', $separator[1]);
     $controller = ucwords($the_controller_name[0]);
     $complete_name_controller = "{$controller}_controller.php";
+    
+    # Verify if exist Controller or Method in the url
+    if (array_key_exists(1, $the_controller_name)) {
 
-    $method_name_only = $the_controller_name[1] .= '&';
-    $method_name_only = explode('&', $method_name_only);
-    $real_method_name = $method_name_only[0];  
+         $method_name_only = $the_controller_name[1] .= '&';
+         $method_name_only = explode('&', $method_name_only);
+         $real_method_name = $method_name_only[0]; 
+
+    } else {
+        echo 'The name of the Controller or the name of the Method can be wrong or not exist';
+        exit;
+    }
 }
 else 
 {
@@ -57,7 +65,9 @@ if (file_exists("controllers/{$complete_name_controller}"))
 
     } else {
     	echo 'This method not exist in this class';
+        exit;
     }
 } else {
 	echo 'This Contoller not exist in this application';
+    exit;
 }
