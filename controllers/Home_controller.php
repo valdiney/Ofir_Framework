@@ -58,11 +58,8 @@ class Home extends Controller
 
     public function login()
     {
-        #$data['login'] = 'admin@admin.com';
-        #$data['password'] = 'admin';
-
         if ($this->model->user_exist(array("login" => "admin@admin.com", "password" => "admin"))) {
-            echo "Existe";
+            Redirect::to_route('home.show');
         } else {
             echo "Nao existe";
         }
