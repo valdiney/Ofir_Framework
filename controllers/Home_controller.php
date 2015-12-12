@@ -44,4 +44,9 @@ class Home extends Controller
             echo 'Erro ao Editar';
         }
     }
+
+    public function show()
+    {
+        echo "Apenas um teste";
+    }
 }
