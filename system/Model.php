@@ -4,6 +4,7 @@ require_once dirname(__DIR__) . '../system/traits/Helper.php';
 require_once dirname(__DIR__) . '../system/traits/Auth.php';
 require_once dirname(__DIR__) . '../system/traits/Hash.php';
 require_once dirname(__DIR__) . '../system/traits/Redirect.php';
+require_once dirname(__DIR__) . '../system/traits/Session.php';
 
 class Model extends Persistence
 {
@@ -11,5 +12,6 @@ class Model extends Persistence
 	Helper,
 	Auth,
 	Hash,
-	Redirect;
+	Redirect,
+	Session;
 }
