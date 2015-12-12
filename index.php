@@ -37,7 +37,7 @@ else
 if (file_exists("controllers/{$complete_name_controller}"))
 {
 	# Include the Database Class
-    require_once('system/database/Database.php');
+    require_once("system/database/Database.php");
     
     # Include the Persistence Class
     require_once("system/Persistence.php");

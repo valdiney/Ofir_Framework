@@ -47,6 +47,24 @@ class Home extends Controller
 
     public function show()
     {
-        echo "Apenas um teste";
+        foreach ($this->model->listar() as $itens) {
+            if ($itens % 2 == 0) {
+                echo "Par Number = {$itens} <br>";
+            } else {
+                echo "Imper Number = {$itens} <br>";
+            }
+        }
+    }
+
+    public function login()
+    {
+        #$data['login'] = 'admin@admin.com';
+        #$data['password'] = 'admin';
+
+        if ($this->model->user_exist(array("login" => "admin@admin.com", "password" => "admin"))) {
+            echo "Existe";
+        } else {
+            echo "Nao existe";
+        }
     }
 }
