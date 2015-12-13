@@ -41,7 +41,7 @@ class Users extends Controller
     	return $this->model->select()->get_all();
     }
     
-    # Using this structure, you can return a lot of the combinations queries
+    # Using this structure, you can return a lot of the queries combination
     public function get_admin_user()
     {
     	$query = $this->model->select()
