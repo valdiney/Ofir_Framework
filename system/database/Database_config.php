@@ -32,7 +32,7 @@ trait database_config
             self::$host = 'localhost';
             self::$dbname = 'iboulevard';
             self::$username = 'root';
-            self::$password = null;
+            self::$password = 'valdiney';
         }
     }
 }
