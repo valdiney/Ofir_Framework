@@ -32,7 +32,7 @@ class Users extends Controller
     # Return the last user from the table
     public function last_user()
     {
-    	return $this->model->select()->get_first();
+    	return $this->model->select()->get_last();
     }
     
     # Return all users from the table
