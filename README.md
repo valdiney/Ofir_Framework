@@ -23,7 +23,7 @@ class Users extends Controller
     	$this->model = $this->load_model('user.User');
     }
     
-    # Return the firts user from the table
+    # Return the first user from the table
     public function first_user()
     {
     	return $this->model->select()->get_first();
