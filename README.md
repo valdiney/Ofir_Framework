@@ -40,6 +40,16 @@ class Users extends Controller
     {
     	return $this->model->select()->get_all();
     }
+    
+    # Using this structure, you can return a lot of the combinations queries
+    public function get_admin_user()
+    {
+    	$query = $this->model->select()
+    	         ->where('login', '=', 'valdiney.2@hotmail.com')
+    	         ->and_too('perfil', '=', 'admin');
+
+    	return $this->model->prepare($query);
+    }
 }
 
 ```
