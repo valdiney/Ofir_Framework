@@ -20,6 +20,7 @@ class Persistence
     * @param id : int : Id of the archive in the database
     * @return boolean or an array
     */
+    
 	public function find($id = 0)
 	{
 		$id = (int) $id;
@@ -61,6 +62,58 @@ class Persistence
 		$this->Persistence .= " AND {$field} {$operator} ?";
 		$this->field[] = $value;
 		return $this;
+	}
+    
+    /**
+    * Get all archives from table
+    *
+    * @return an array of objects
+    */
+
+	public function get_all()
+	{
+		$sql = $this->db->prepare($this->Persistence);
+		$sql->execute();
+		return $sql->fetchAll(PDO::FETCH_OBJ);
+	}
+    
+    /**
+    * Get the first archive from table
+    *
+    * @return an array of objects
+    */
+
+	public function get_first()
+	{
+		$this->Persistence .= " ORDER BY id ASC LIMIT 1";
+		$sql = $this->db->prepare($this->Persistence);
+		$sql->execute();
+		return $sql->fetchAll(PDO::FETCH_OBJ);
+	} 
+
+	/**
+    * Get the last archive from table
+    *
+    * @return an array of objects
+    */
+
+	public function get_last()
+	{
+		$this->Persistence .= " ORDER BY id DESC LIMIT 1";
+		$sql = $this->db->prepare($this->Persistence);
+		$sql->execute();
+		return $sql->fetchAll(PDO::FETCH_OBJ);
+	}
+
+	/**
+    * This method return the last id of a inset in the table
+    *
+    * @return interger id
+    */
+
+	public function get_last_id()
+	{
+		return $this->db->lastInsertId();
 	}
 
 	public function prepare($sql = false)

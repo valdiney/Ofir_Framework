@@ -56,6 +56,9 @@ if (file_exists("controllers/{$complete_name_controller}"))
     
     # Instantiante the class Controller
     $controller_app = new $controller();
+    
+    # Start the Session
+    Session::start();
 
     # Verify if the Method exist in the Class controller
     if (method_exists($controller_app, $real_method_name)) {

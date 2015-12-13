@@ -1,5 +1,5 @@
 body {
-    background:#cae5ee;
+    background:#012e4f;
     font-family:DengXian;
 }
 
@@ -22,4 +22,21 @@ body {
     margin:auto;
     border-radius:3px;
     margin-top:10px;
+}
+
+.conteiner {
+    width:1000px;
+    height:auto;
+    min-height:100px;
+    background:white;
+    margin:auto;
+    margin-top:10px;
+    padding:10px;
+}
+
+h2 {
+    width:300px;
+    display:block;
+    margin:auto;
+    text-align:center;
 }

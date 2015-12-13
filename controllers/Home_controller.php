@@ -13,55 +13,25 @@ class Home extends Controller
 
 	public function index()
 	{   
-        $data['page_title'] = 'Ofir-Framework';
-        $data['description'] = 'Welcome to Ofir, this is a project development 
-                                of the PHP-Framework, develop of the students to students.  
-                                what do you think about help me to develop this project?';
-
-        $this->view->set('data', $data);
-		$this->view->make('home.home');
-	}
-
-    public function cadastrar()
-    {
-        $data['login'] = Input::in_post('login');
-
-        if ($this->model->save($data)) {
-            echo 'Login cadastrado.';
-        } else {
-            echo 'Erro ao cadastrar.';
-        }
+        $this->view->set('title', 'Show Users');
+        $this->view->set('all_users', $this->select_all_users());
+        $this->view->make('home.home');
     }
 
-    public function editar()
+    public function select_all_users()
+    {
+        return $this->model->select()->get_all();
+    }
+
+    public function delete()
     {
         $id = Input::in_get('id');
-        $data['login'] = Input::in_post('login');
 
-        if ($this->model->update($data, $id)) {
-            echo 'Login Editado';
+        if ($this->model->delete($id)) {
+            Session::flash('success', 'Usuario deletado com Sucesso.');
+            Redirect::to_route('home.index');
         } else {
-            echo 'Erro ao Editar';
-        }
-    }
-
-    public function show()
-    {
-        foreach ($this->model->listar() as $itens) {
-            if ($itens % 2 == 0) {
-                echo "Par Number = {$itens} <br>";
-            } else {
-                echo "Imper Number = {$itens} <br>";
-            }
-        }
-    }
-
-    public function login()
-    {
-        if ($this->model->user_exist(array("login" => "admin@admin.com", "password" => "admin"))) {
-            Redirect::to_route('home.show');
-        } else {
-            echo "Nao existe";
+            echo "Erro ao tentar deletar usuario";
         }
     }
 }

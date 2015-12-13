@@ -1,4 +1,7 @@
 <?php 
+require_once('traits/String_helper.php');
+require_once('traits/Generating_perfect_url.php');
+
 require_once('traits/Input.php');
 require_once('traits/Helper.php');
 require_once('traits/Auth.php');
