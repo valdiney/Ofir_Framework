@@ -14,13 +14,28 @@ This is the controller, and  using some methods of the Persistence class.
 
 class Users extends Controller
 {
-    protected $view;
     protected $model;
+    protected $view;
 
     public function __construct()
     {
-    	$this->view = new View();
     	$this->model = $this->load_model('user.User');
+        $this->view = $this->view();
+    }
+
+    public function index()
+    {
+        # Set the layout that this view will use
+        $this->view->layout('default_layout');
+
+        # Loading file that will be used in this view
+        $this->view->with_files('menu_left', 'layouts.menu_left');
+        
+        # Select all users with pagination
+        $data['users'] = Pagination::paginator(2, $this->model->select()->get_all());
+
+        # Set the view that will be used to this method
+        return $this->view->make('home.home', $data);
     }
     
     # Return the first user from the table
@@ -53,4 +68,3 @@ class Users extends Controller
 }
 
 ```
-
