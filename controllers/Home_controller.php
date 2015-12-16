@@ -1,37 +1,20 @@
 <?php 
 class Home extends Controller
 {
-    protected $view;
     protected $model;
+    protected $view;
 
     public function __construct()
     {
-    	$this->view = new View();
-        $this->view->layout_name('default_layout');
-    	$this->model = $this->load_model('user.User');
+        $this->model = $this->load_model('user.User');
+        $this->view = $this->view();
     }
 
-	public function index()
-	{   
-        $this->view->set('title', 'Show Users');
-        $this->view->set('all_users', $this->select_all_users());
-        $this->view->make('home.home');
-    }
-
-    public function select_all_users()
-    {
-        return $this->model->select()->get_all();
-    }
-
-    public function delete()
-    {
-        $id = Input::in_get('id');
-
-        if ($this->model->delete($id)) {
-            Session::flash('success', 'Usuario deletado com Sucesso.');
-            Redirect::to_route('home.index');
-        } else {
-            echo "Erro ao tentar deletar usuario";
-        }
+    public function index()
+    {   
+        $this->view->layout('default_layout');
+    
+        $data['title'] = 'This is Ofir Framework';
+        return $this->view->make('home.home', $data);
     }
 }

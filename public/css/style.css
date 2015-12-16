@@ -1,6 +1,6 @@
 body {
     background:#012e4f;
-    font-family:DengXian;
+    font-family:Arial;
 }
 
 .description {
@@ -13,15 +13,6 @@ body {
     margin:auto;
     background:white;
     color:#333333;
-}
-
-.pre {
-    width:500px;
-    height:auto;
-    pading:0;
-    margin:auto;
-    border-radius:3px;
-    margin-top:10px;
 }
 
 .conteiner {
@@ -39,4 +30,13 @@ h2 {
     display:block;
     margin:auto;
     text-align:center;
+}
+
+.title {
+    font-family:DengXian;
+}
+
+.description {
+    font-size:20px;
+    margin-top:10px;
 }

@@ -14,7 +14,7 @@ trait Helper
 
 	public static function link_to($path = false, $variables = false)
 	{
-		echo "?" . Generating_perfect_url::generating_perfect_url($path, $variables);
+		echo "href='?" . Generating_perfect_url::generating_perfect_url($path, $variables) . "&p=1" . "'>";
     }
     
     /**
@@ -26,7 +26,7 @@ trait Helper
 
     public static function action($path = false, $variables = false)
     {
-    	echo 'action="?' . Generating_perfect_url::generating_perfect_url($path, $variables) . '"';
+    	echo 'action="?' . Generating_perfect_url::generating_perfect_url($path, $variables) . '">';
     }
     
     
@@ -43,11 +43,24 @@ trait Helper
         $path = String_helper::to_slash($path);
     	echo "<link rel='stylesheet' href='public/{$path}.css'></style>";
     }
+    
+    /**
+    * This method is used for include script in the layout
+    *
+    * @param path : string : The folder and name of the script file
+    * @return void
+    */
 
     public static function script($path = false)
     { 
         # Transforming the operator '.' in operator '='
         $path = String_helper::to_slash($path);
         echo "<script src='public/{$path}.js'></script>";
+    }
+
+    public static function import_once($path)
+    {
+        $path = String_helper::to_slash($path);
+        require_once dirname(__DIR__) . "/../{$path}.php";
     }
 }

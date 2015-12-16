@@ -116,6 +116,12 @@ class Persistence
 		return $this->db->lastInsertId();
 	}
 
+	public function limit($limit_numbar = 1) 
+	{
+		$this->Persistence .= " LIMIT {$limit_numbar}";
+		return $this;
+	} 
+
 	public function prepare($sql = false)
 	{
 		$values = null;
@@ -152,8 +158,7 @@ class Persistence
 
 	public function save(Array $data)
 	{
-		foreach ($data as $key => $list)
-		{
+		foreach ($data as $key => $list) {
 			$fields[] = $key;
 			$values[] = $list;
 		}

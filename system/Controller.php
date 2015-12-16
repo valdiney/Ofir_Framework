@@ -7,8 +7,7 @@ class Controller
 		$model_name = str_replace('.', '/', $model_name);
 		
 		# Verify if Model Exist
-		if (file_exists("models/{$model_name}.php")) 
-		{
+		if (file_exists("models/{$model_name}.php")) {
 		    $model_path = explode('/', $model_name);
 		    $model = $model_path[1];
             
@@ -17,9 +16,16 @@ class Controller
 
 			# Instantiante the class Model and passing the Database Connection
 			return $model = new $model(Database::connect());
-		} 
-		else {
+		} else {
 			echo 'This Model not exist';
+		}
+	}
+
+	protected function view()
+	{
+		if (file_exists('system/View.php')) {
+			require_once('system/View.php');
+			return new View();
 		}
 	}
 }

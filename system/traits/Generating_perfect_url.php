@@ -15,8 +15,7 @@ trait Generating_perfect_url
     	# Transforming the operator '.' in operator '='
 		$path = str_replace('.', '=', $path);
 
-		if ($variables) 
-		{
+		if ($variables) {
 			$variables_collection = null;
 
 			# Transforming the String for Array, separate by '|'

@@ -30,7 +30,7 @@ trait database_config
         {
             # Put your credentials of database localhost here
             self::$host = 'localhost';
-            self::$dbname = 'livros';
+            self::$dbname = '';
             self::$username = 'root';
             self::$password = '';
         }
