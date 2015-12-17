@@ -32,7 +32,7 @@ class Users extends Controller
         $this->view->with_files('menu_left', 'layouts.menu_left');
         
         # Select all users with pagination
-        $data['users'] = Pagination::paginator(2, $this->model->select()->get_all());
+        $data['users'] = Pagination::paginator(2, $this->user->select()->get_all());
 
         # Set the view that will be used for this method
         return $this->view->make('home.home', $data);
@@ -42,29 +42,29 @@ class Users extends Controller
     # Return the first user from the table
     public function first_user()
     {
-    	return $this->model->select()->get_first();
+    	return $this->user->select()->get_first();
     }
     
     # Return the last user from the table
     public function last_user()
     {
-    	return $this->model->select()->get_last();
+    	return $this->user->select()->get_last();
     }
     
     # Return all users from the table
     public function select_all()
     {
-    	return $this->model->select()->get_all();
+    	return $this->user->select()->get_all();
     }
     
     # Using this structure, you can return a lot of the queries combination
     public function get_admin_user()
     {
-    	$query = $this->model->select()
+    	$query = $this->user->select()
     	         ->where('login', '=', 'valdiney.2@hotmail.com')
     	         ->and_too('perfil', '=', 'admin');
 
-    	return $this->model->prepare($query);
+    	return $this->user->prepare($query);
     }
 }
 
