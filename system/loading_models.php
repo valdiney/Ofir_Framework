@@ -1,5 +1,11 @@
 <?php 
 
+/**
+* This function is used to get the models in models folder
+*
+* @return array with the models names
+*/
+
 function finding_models()
 {
     $model_folder = "models/";
@@ -7,24 +13,36 @@ function finding_models()
 
     $models = array();
     while ($archives = $dir -> read()) {
-        $models[] = $archives;
-        unset($models[0]);
-        unset($models[1]);
+        if ($archives != '.' AND $archives != '..') {
+            $models[] = $archives;
+        }
     }
-    
-    $dir -> close();
     
     return $models;
 }
 
-function load_models()
+/**
+* This function is used to include the models in the application
+* 
+* @param models_name : array : models names
+* @return void
+*/
+
+function load_models($models_name)
 {
-    foreach (finding_models() as $items) {
+    foreach ($models_name as $items) {
         require_once("models/{$items}");
     }
 }
 
-load_models();
+# Including the file models
+load_models(finding_models());
+
+/**
+* Instantiate the models
+* 
+* @return Array with the models names
+*/
 
 function prepare_models_to_instantiate()
 {
