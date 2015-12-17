@@ -14,12 +14,12 @@ This is the controller, and  using some methods of the Persistence class.
 
 class Users extends Controller
 {
-    protected $model;
+    protected $user;
     protected $view;
 
-    public function __construct()
+    public function __construct($models = array())
     {
-    	$this->model = $this->load_model('user.User');
+    	$this->user = $models['User'];
         $this->view = $this->view();
     }
 
