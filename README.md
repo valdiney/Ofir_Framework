@@ -28,15 +28,16 @@ class Users extends Controller
         # Set the layout that this view will use
         $this->view->layout('default_layout');
 
-        # Loading file that will be used in this view
+        # Load this file to be used into of this view
         $this->view->with_files('menu_left', 'layouts.menu_left');
         
         # Select all users with pagination
         $data['users'] = Pagination::paginator(2, $this->model->select()->get_all());
 
-        # Set the view that will be used to this method
+        # Set the view that will be used for this method
         return $this->view->make('home.home', $data);
     }
+
     
     # Return the first user from the table
     public function first_user()
@@ -68,3 +69,4 @@ class Users extends Controller
 }
 
 ```
+

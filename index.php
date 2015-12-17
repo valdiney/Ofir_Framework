@@ -54,9 +54,6 @@ if (file_exists("controllers/{$complete_name_controller}"))
 	# Include the Controller Class
 	require_once("system/Controller.php");
 
-    # Include the View Class
-	//require_once("system/View.php");
-
     # This function is used to loader class service
     function service_loader($names) {
         foreach ($names as $itens) {
@@ -72,9 +69,11 @@ if (file_exists("controllers/{$complete_name_controller}"))
     # Include the Controller that will be called in the url
 	require_once("controllers/{$complete_name_controller}");
     
-    # Instantiante the class Controller
-    $controller_app = new $controller();
-    
+    # Including the Model autoloader
+    require_once("system/loading_models.php");
+
+    $controller_app = new $controller(prepare_models_to_instantiate());
+
     # Including the names of the class services
     require_once('register_service.php');
     
