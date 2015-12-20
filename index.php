@@ -7,7 +7,7 @@ if (array_key_exists(1, $separator))
 {
     $the_controller_name = explode('=', $separator[1]);
     $controller = ucwords($the_controller_name[0]);
-    $complete_name_controller = "{$controller}_Controller.php";
+    $controller_first_name = "{$controller}";
     
     # Verify if exist Controller or Method in the url
     if (array_key_exists(1, $the_controller_name)) {
@@ -35,24 +35,24 @@ else
         header("Location:?home=index&p=1");
     }
 
-	echo 'This Controller not exist';
-	exit;
+    echo 'This Controller not exist';
+    exit;
 }
 
 # Verify if Controller exist in the folder 'controllers'
-if (file_exists("controllers/{$complete_name_controller}"))
+if (file_exists("controllers/{$controller_first_name}_Controller.php"))
 {
-	# Include the Database Class
+    # Include the Database Class
     require_once("system/database/Database.php");
     
     # Include the Persistence Class
     require_once("system/Persistence.php");
 
     # Include the Model Class
-	require_once("system/Model.php");
+    require_once("system/Model.php");
 
-	# Include the Controller Class
-	require_once("system/Controller.php");
+    # Include the Controller Class
+    require_once("system/Controller.php");
 
     # This function is used to loader class service
     function service_loader($names) {
@@ -67,12 +67,15 @@ if (file_exists("controllers/{$complete_name_controller}"))
     }
 
     # Include the Controller that will be called in the url
-	require_once("controllers/{$complete_name_controller}");
+    require_once("controllers/{$controller_first_name}_Controller.php");
+    
+    # full name of controller
+    $full_name_controller = "{$controller_first_name}_Controller";
     
     # Including the Model autoloader
     require_once("system/loading_models.php");
 
-    $controller_app = new $controller(prepare_models_to_instantiate());
+    $controller_app = new $full_name_controller(prepare_models_to_instantiate());
 
     # Including the names of the class services
     require_once('register_service.php');
@@ -87,13 +90,13 @@ if (file_exists("controllers/{$complete_name_controller}"))
     if (method_exists($controller_app, $real_method_name)) {
 
         # Call the methods of the controllers
-    	$controller_app->$real_method_name();
+        $controller_app->$real_method_name();
 
     } else {
-    	echo 'This method not exist in this class';
+        echo 'This method not exist in this class';
         exit;
     }
 } else {
-	echo 'This Contoller not exist in this application';
+    echo 'This Contoller not exist in this application';
     exit;
 }

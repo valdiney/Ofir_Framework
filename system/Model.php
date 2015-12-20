@@ -10,6 +10,7 @@ require_once('traits/Hash.php');
 require_once('traits/Redirect.php');
 require_once('traits/Session.php');
 require_once('traits/Pagination.php');
+require_once('traits/Date.php');
 
 class Model extends Persistence
 {
@@ -20,5 +21,6 @@ class Model extends Persistence
 	Redirect,
 	Session,
 	Pagination,
-	Get_url;
+	Get_url,
+	Date;
 }

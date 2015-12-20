@@ -1,14 +1,12 @@
 <?php 
-class Home extends Controller
+class Home_Controller extends Controller
 {
     protected $user;
-    protected $clientes;
     protected $view;
 
     public function __construct($models = array())
     {
         $this->user = $models['User'];
-        $this->clientes = $models['Clientes'];
         $this->view = $this->view();
     }
 
@@ -18,7 +16,7 @@ class Home extends Controller
     
         $data['title'] = 'This is Ofir Framework';
         $data['usuarios'] = $this->user->select()->get_all();
-        $data['clientes'] = $this->clientes->select()->get_first();
+
         return $this->view->make('home.home', $data);
     }
 }

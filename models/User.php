@@ -1,5 +1,5 @@
 <?php 
 class User extends Model
 {
-	protected $table = 'usuario';
+	protected $table = null;
 }
