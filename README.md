@@ -12,7 +12,7 @@ This is the controller, and  using some methods of the Persistence class.
 
 ````php
 
-class UsersController extends Controller
+class Users_Controller extends Controller
 {
     protected $user;
     protected $view;
