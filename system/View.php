@@ -47,9 +47,11 @@ class View
 
 	public function make($view_name, $data = false)
 	{   
-		# Set in array the values passed to view
-		foreach ($data as $key => $items) {
-			$this->data[$key] = $items;
+		if ($data) {
+			# Set in array the values passed to view
+		    foreach ($data as $key => $items) {
+			    $this->data[$key] = $items;
+		    }
 		}
 
 		# Transforming the operator '.' in operator '='

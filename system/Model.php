@@ -11,6 +11,7 @@ require_once('traits/Redirect.php');
 require_once('traits/Session.php');
 require_once('traits/Pagination.php');
 require_once('traits/Date.php');
+require_once('traits/Money_format.php');
 
 class Model extends Persistence
 {
@@ -22,5 +23,6 @@ class Model extends Persistence
 	Session,
 	Pagination,
 	Get_url,
-	Date;
+	Date,
+	Money_format;
 }

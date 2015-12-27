@@ -54,18 +54,6 @@ if (file_exists("controllers/{$controller_first_name}_Controller.php"))
     # Include the Controller Class
     require_once("system/Controller.php");
 
-    # This function is used to loader class service
-    function service_loader($names) {
-        foreach ($names as $itens) {
-            if (file_exists("service/{$itens}.php")) {
-                require_once("service/{$itens}.php");
-            } else {
-                echo "The service <b>{$itens}</b> not exist";
-                exit;
-            }
-        }
-    }
-
     # Include the Controller that will be called in the url
     require_once("controllers/{$controller_first_name}_Controller.php");
     
@@ -74,11 +62,11 @@ if (file_exists("controllers/{$controller_first_name}_Controller.php"))
     
     # Including the Model autoloader
     require_once("system/loading_models.php");
+    
+    # Including the Service autoload
+    require_once("system/loading_services.php");
 
-    $controller_app = new $full_name_controller(prepare_models_to_instantiate());
-
-    # Including the names of the class services
-    require_once('register_service.php');
+    $controller_app = new $full_name_controller(prepare_models_to_instantiate(), prepare_service_to_instantiate());
     
     # Start the Session
     Session::start();
