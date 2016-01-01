@@ -16,4 +16,14 @@ trait Redirect
 		$complete_path = Generating_perfect_url::generating_perfect_url($path, $variables);
 		header("Location:?{$complete_path}&p=1");
 	}
+
+	public static function back($variables = false) 
+	{
+		$server = $_SERVER['HTTP_REFERER'];
+		$extract_question_mark = explode('?', $server);
+		$extract_again = explode('&p=', $extract_question_mark[1]);
+        
+        $path = $extract_again[0];
+		header("Location:?{$path}&p=1");
+	}
 }

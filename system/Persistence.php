@@ -228,4 +228,48 @@ class Persistence
 		$delete = $this->db->prepare("DELETE FROM {$this->table} WHERE id = ?");
 		return $delete->execute(array($id));
 	}
+    
+    /**
+    * This method is used to create a relationship between two or more tables using INNER JOIN clause
+    *
+    * @param master_table : string : Name of the master table of the relationship
+    * @param master_table_field : string : Name of the field of the master table
+    * @param slave_field : string : Name of the slave table field of the relationship, in other words, the other table of the relationship
+    * @param fiels : string : Names of the fields of the tables that you wanna show
+    * @return Object
+    */
+
+	public function join($master_table, $master_table_field, $slave_table, $fk_slave, $fields = false)
+	{
+		$this->Persistence = "SELECT {$master_table}.{$master_table_field}, {$fields} FROM {$master_table} INNER JOIN {$slave_table} ON {$slave_table}.{$fk_slave} = {$master_table}.{$master_table_field}";
+	    return $this;
+	}
+
+	/**
+	* This method is used when you need join more than two table in the same query. This method should be used together 'join' method
+    *
+	* @param master_table : string : Name of the master table of the relationship
+    * @param master_table_field : string : Name of the field of the master table
+    * @param slave_field : string : Name of the slave table field of the relationship, in other words, the other table of the relationship
+    * @param fiels : string : Names of the fields of the tables that you wanna show
+    * @return Object
+	*/
+
+	public function join_too($master_table, $master_table_field, $slave_table, $fk_slave)
+	{
+		$this->Persistence .= " AND {$master_table}.{$master_table_field} INNER JOIN {$slave_table} ON {$slave_table}.{$fk_slave} = {$master_table}.{$master_table_field}";
+		return $this;
+	}
+
+	public function left_join($master_table, $master_table_field, $slave_table, $fk_slave, $fields = false)
+	{
+		$this->Persistence = "SELECT {$master_table}.{$master_table_field}, {$fields} FROM {$master_table} LEFT JOIN {$slave_table} ON {$slave_table}.{$fk_slave} = {$master_table}.{$master_table_field}";
+	    return $this;
+	}
+
+	public function left_join_too($master_table, $master_table_field, $slave_table, $fk_slave)
+	{
+		$this->Persistence .= " AND {$master_table}.{$master_table_field} LEFT JOIN {$slave_table} ON {$slave_table}.{$fk_slave} = {$master_table}.{$master_table_field}";
+		return $this;
+	}
 }
