@@ -68,7 +68,7 @@ class Users_Controller extends Controller
     }
     
     # Using relationship with JOIN clause
-    public function colecao()
+    public function colection()
 	{
 		$join = $this->clientes->left_join('clientes', 'id', 'emprestimos', 'id_cliente',
 			'clientes.nome,
