@@ -66,6 +66,21 @@ class Users_Controller extends Controller
 
     	return $this->user->prepare($query);
     }
+    
+    # Using relationship with JOIN clause
+    public function colecao()
+	{
+		$join = $this->clientes->left_join('clientes', 'id', 'emprestimos', 'id_cliente',
+			'clientes.nome,
+			 clientes.id AS cliente_id,
+			 emprestimos.id AS emprestimo_id,
+			 emprestimos.valor_emprestimo,
+			 parcelas.valor_parcela
+			'
+			)->left_join_too('emprestimos', 'id', 'parcelas', 'id_emprestimo')->get_all();
+        
+        return $join;
+	}
 }
 
 ```
