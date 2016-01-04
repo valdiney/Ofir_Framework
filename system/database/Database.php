@@ -1,5 +1,4 @@
 <?php 
-require_once('Database_config.php');
 /**
 * --------------------------------------------------------------------------
 * This class is used to make the connection with the database

@@ -42,6 +42,9 @@ else
 # Verify if Controller exist in the folder 'controllers'
 if (file_exists("controllers/{$controller_first_name}_Controller.php"))
 {
+    # Include Database Config
+    require_once('database/Database_config.php');
+
     # Include the Database Class
     require_once("system/database/Database.php");
     
