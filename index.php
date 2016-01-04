@@ -60,13 +60,16 @@ if (file_exists("controllers/{$controller_first_name}_Controller.php"))
     # full name of controller
     $full_name_controller = "{$controller_first_name}_Controller";
     
-    # Including the Model autoloader
-    require_once("system/loading_models.php");
-    
-    # Including the Service autoload
-    require_once("system/loading_services.php");
+    # Including Class for loader Model class and Services in controller
+    require_once('system/Class_Loader.php');
 
-    $controller_app = new $full_name_controller(prepare_models_to_instantiate(), prepare_service_to_instantiate());
+    $model_loader = new Class_Loader();
+    $model_loader->set_dir_class('models/');
+
+    $service_loader = new Class_Loader();
+    $service_loader->set_dir_class('service/');
+
+    $controller_app = new $full_name_controller($model_loader->prepare_class_to_instantiate(), $service_loader->prepare_class_to_instantiate());
     
     # Start the Session
     Session::start();
