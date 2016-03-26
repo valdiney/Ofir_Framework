@@ -28,6 +28,13 @@ class Persistence
 		$query->execute(array($id));
 		return $query->fetch(PDO::FETCH_ASSOC);
 	}
+
+	public function get_array()
+	{
+		$query = $this->db->prepare("SELECT * FROM {$this->table}");
+		$query->execute();
+		return $query->fetch(PDO::FETCH_ASSOC);
+	}
     
     /**
     * Find an archive in database by field of the archive and compare with value

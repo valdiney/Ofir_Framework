@@ -6,4 +6,4 @@
 </p>
 
 
-<?php $this->import_files('left_menu'); ?>
+<?php //$this->import_files('left_menu'); ?>
