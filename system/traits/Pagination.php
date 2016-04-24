@@ -45,11 +45,9 @@ trait Pagination
 
         self::$query = $db_query;
         
-        # Calculate the total number of page
-        self::$num_page = ceil(self::total_rows() / $per_page);
-        
         # Array separator
-		$result = array_chunk($db_query, self::$num_page);
+		$result = array_chunk($db_query, $per_page);
+		self::$num_page = count($result);
 
 		# Result of items
 		return $result[$get_page -1];
@@ -73,9 +71,8 @@ trait Pagination
 
 		$next = self::$next_link;
 
-		$per_page = ceil(self::total_rows() / self::$num_page);
-		if ($next > $per_page) {
-			$next = $per_page;
+		if ($next > self::$num_page) {
+			$next = self::$num_page;
 		}
 
 		$controller = Get_url::get_url('controller');
@@ -120,5 +117,15 @@ trait Pagination
 
 		$url = "?{$controller}={$method}={$min}";
 		echo "href='{$url}'>";
+	}
+
+	public static function paginate_information()
+	{
+		$page = $_GET['p'];
+		if ($page >= self::$num_page) {
+			$page = self::$num_page;
+		} 
+
+		return $page . " de " . self::$num_page;
 	}
 }
