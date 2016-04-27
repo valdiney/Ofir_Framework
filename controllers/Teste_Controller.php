@@ -22,10 +22,10 @@ class Teste_Controller extends Controller
     	var_dump($this->user->prepare($quessia));
     	//var_dump($quessia);*/
 
-        $time = Date::date_time('d/m/Y H:i');
 
-        var_dump($time);
+        $timestamp = '2016-04-26 15:26:47';
 
-       // var_dump(date('d/m/Y H:i', strtotime($time)));
+        $meu_formato = Date::date_time('d/m/Y H:i', $timestamp);
+        # Resultado: 26/04/2016 15:26
     }
 }

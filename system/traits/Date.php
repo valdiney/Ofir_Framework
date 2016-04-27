@@ -36,13 +36,17 @@ trait Date
 
     # This method is used to return a date time, the parameters represent 'continent' and 'city'
     # to be put in time zone
-    public static function date_time($format = false, $continent = 'America', $city = 'Araguaina')
+    public static function date_time($format = false, $your_date = false, $continent = 'America', $city = 'Araguaina')
     {
         date_default_timezone_set("{$continent}/{$city}");
         $date = date("Y-m-d H:i:s");
 
         if ($format == null) {
             return $date;
+        }
+
+        if ($your_date != null) {
+            return date($format, strtotime($your_date));
         }
 
         return date($format, strtotime($date));
