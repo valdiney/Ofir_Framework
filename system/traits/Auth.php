@@ -1,5 +1,4 @@
 <?php 
-
 trait Auth
 {
 	private function login_verify($data = array())

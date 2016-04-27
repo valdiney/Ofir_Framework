@@ -13,7 +13,12 @@ class Persistence
 	{
 		$this->db = $pdo;
 	}
-    
+
+	public function __destruct() {
+		$this->Persistence = " ";
+		$fields = array();
+	}
+
     /**
     * Find an archive in database by field id
     *
