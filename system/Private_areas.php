@@ -1,5 +1,4 @@
 <?php 
-
 class Private_areas
 {
 	public static $Private_areas = false;
@@ -14,7 +13,8 @@ class Private_areas
         $method_name = $other_separator[1];
 
         if ($option == 'method') {
-        	return $method_name;
+        	$only_name = explode('&', $method_name);
+        	return $only_name[0];
         }
 
         if ($option == 'controller') {

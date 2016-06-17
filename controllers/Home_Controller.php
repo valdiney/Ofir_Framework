@@ -15,14 +15,8 @@ class Home_Controller extends Controller
     public function index()
     {   
         $this->layout_pricipal;
-        $this->view->with_files('left_menu','views.menu.menu_left');
     
         $title = 'This is Ofir Framework';
         return $this->view->make('home.home', compact('title'));
-    }
-
-    public function teste()
-    {
-        
     }
 }
