@@ -2,6 +2,9 @@
 $url = $_SERVER['REQUEST_URI'];
 $separator = explode('?', $url);
 
+# Path to pages not fould (404)
+$not_found_path = 'views/page_not_found/404.php';
+
 # Verify if exist a Controller for render the index page
 if (array_key_exists(1, $separator)) 
 {
@@ -17,7 +20,8 @@ if (array_key_exists(1, $separator))
          $real_method_name = $method_name_only[0]; 
 
     } else {
-        echo 'The name of the Controller or the name of the Method can be wrong or not exist';
+        $massage_404 = 'The name of the Controller or the name of the Method can be wrong or not exist';
+        require_once($not_found_path);
         exit;
     }
 }
@@ -35,7 +39,8 @@ else
         header("Location:?home=index&p=1");
     }
 
-    echo 'This Controller not exist';
+    $massage_404 = 'This Controller not exist';
+    require_once($not_found_path);
     exit;
 }
 
@@ -90,10 +95,12 @@ if (file_exists("controllers/{$controller_first_name}_Controller.php"))
         $controller_app->$real_method_name();
 
     } else {
-        echo 'This method not exist in this class';
+        $massage_404 = 'This method not exist in this Controller';
+        require_once($not_found_path);
         exit;
     }
 } else {
-    echo 'This Contoller not exist in this application';
+    $massage_404 = 'This Controller not exist in this application';
+    require_once($not_found_path);
     exit;
 }

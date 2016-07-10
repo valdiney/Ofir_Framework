@@ -4,5 +4,3 @@
 	develop of the students to students. 
 	what do you think about help me to develop this project?
 </p>
-
-<?php //$this->import_files('left_menu'); ?>
