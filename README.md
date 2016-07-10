@@ -12,76 +12,33 @@ This is the controller, and  using some methods of the Persistence class.
 
 ````php
 
-class Users_Controller extends Controller
+# Exemplo of the Model class
+class User extends Model
+{
+    protected $table = 'user';
+}
+
+```
+
+````php
+
+# Exemplo of the Controller class
+class User_Controller extends Controller 
 {
     protected $user;
     protected $view;
 
-    public function __construct(Array $models)
+    public function __construct(Array $models, Array Services)
     {
-    	$this->user = $models['User'];
+        $this->user = $models['User'];
         $this->view = $this->view();
     }
 
     public function index()
     {
-        # Set the layout that this view will use
-        $this->view->layout('default_layout');
-
-        # Load this file to be used into of this view
-        $this->view->with_files('menu_left', 'layouts.menu_left');
-        
-        # Select all users with pagination
-        $data['users'] = Pagination::paginator(2, $this->user->select()->get_all());
-
-        # Set the view that will be used for this method
-        return $this->view->make('home.home', $data);
+        $users = $this->user->select()->get_all();
+        return $this->view->make('home.index', compact('user'));
     }
-
-    
-    # Return the first user from the table
-    public function first_user()
-    {
-    	return $this->user->select()->get_first();
-    }
-    
-    # Return the last user from the table
-    public function last_user()
-    {
-    	return $this->user->select()->get_last();
-    }
-    
-    # Return all users from the table
-    public function select_all()
-    {
-    	return $this->user->select()->get_all();
-    }
-    
-    # Using this structure, you can return a lot of the queries combination
-    public function get_admin_user()
-    {
-    	$query = $this->user->select()
-    	         ->where('login', '=', 'valdiney.2@hotmail.com')
-    	         ->and_too('perfil', '=', 'admin');
-
-    	return $this->user->prepare($query);
-    }
-    
-    # Using relationship with JOIN clause
-    public function colection()
-	{
-		$join = $this->clientes->left_join('clientes', 'id', 'emprestimos', 'id_cliente',
-			'clientes.nome,
-			 clientes.id AS cliente_id,
-			 emprestimos.id AS emprestimo_id,
-			 emprestimos.valor_emprestimo,
-			 parcelas.valor_parcela
-			'
-			)->left_join_too('emprestimos', 'id', 'parcelas', 'id_emprestimo')->get_all();
-        
-        return $join;
-	}
 }
 
 ```
-
