@@ -28,7 +28,7 @@ class User_Controller extends Controller
     protected $user;
     protected $view;
 
-    public function __construct(Array $models, Array Services)
+    public function __construct(Array $models, Array $services)
     {
         $this->user = $models['User'];
         $this->view = $this->view();
