@@ -5,6 +5,7 @@ Welcome to Ofir. This is a Project Development of the PHP-Framework. Developed o
 
 <p>
 The Ofir is very easy to use. You just need instal and run in your server.
+Ofir uses the Model-View-Controller approach, which allows great separation between logic and presentation. 
 </p>
 
 # What I need at this moment?
