@@ -1,8 +1,11 @@
 # Ofir_Framework-0.1
-The Ofir is very easy to use. You just need instal and run in your server.
 
 # Description
 Welcome to Ofir. This is a Project Development of the PHP-Framework. Developed of  student to students. What do you think about contribute with this project?
+
+<p>
+The Ofir is very easy to use. You just need instal and run in your server.
+</p>
 
 # What I need at this moment?
 I need to create a powerful class to work with SQL query. My objective is abstracting the SQL language in the Application.
