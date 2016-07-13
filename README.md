@@ -49,7 +49,7 @@ class User_Controller extends Controller
 ```
 <h3>Exemple of the View</h3>
 
-````html
+````php
 
 <!DOCTYPE html>
 <html lang="en">
