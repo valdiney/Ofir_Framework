@@ -10,9 +10,9 @@ Welcome to Ofir, this is a project development of the PHP-Framework, develop of 
 I'm trying write a powerful class to work with SQL query. <br>
 This is the controller, and  using some methods of the Persistence class.
 
+<h4>Exemple of the Model class</h4>
 ````php
 
-# Exemple of the Model class
 class User extends Model
 {
     protected $table = 'user';
@@ -20,25 +20,49 @@ class User extends Model
 
 ```
 
+<h3>Exemple of the Controller class</h3>
+
 ````php
 
-# Exemple of the Controller class
 class User_Controller extends Controller 
 {
     protected $user;
     protected $view;
+    protected $default_layout;
 
     public function __construct(Array $models, Array $services)
     {
         $this->user = $models['User'];
         $this->view = $this->view();
+        $this->default_layout = $this->view->layout('default_layout');
     }
 
     public function index()
     {
+        $this->default_layout
+
         $users = $this->user->select()->get_all();
-        return $this->view->make('home.index', compact('user'));
+        return $this->view->make('home.index', compact('users'));
     }
 }
+
+```
+<h3>Exemple of the View</h3>
+
+````html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Page</title>
+</head>
+<body>
+    <?php foreach ($users as $user):?>
+       <b>Nome:</b> <?php $user->name;?> <br>
+       <b>Email:</b> <?php $user->email;?> <br>
+    <?php endforeach;?>
+</body>
+</html>
 
 ```
