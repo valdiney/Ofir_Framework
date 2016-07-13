@@ -7,8 +7,8 @@ Welcome to Ofir. This is a Project Development of the PHP-Framework. Developed o
 # Some Examples
 
 
-I'm trying write a powerful class to work with SQL query. <br>
-This is the controller, and  using some methods of the Persistence class.
+# What I need at this moment?
+I need to create a powerful class to work with SQL query. My objective is abstracting the SQL language in the Application.
 
 <h4>Exemple of the Model class</h4>
 ````php
