@@ -2,7 +2,7 @@
 This is the development of the new version of the Ofir, a simple php framework.
 
 # Description
-Welcome to Ofir, this is a Project Development of the PHP-Framework. Developed of  student to students. What do you think about contribute with this project?
+Welcome to Ofir. This is a Project Development of the PHP-Framework. Developed of  student to students. What do you think about contribute with this project?
 
 # Some Examples
 
