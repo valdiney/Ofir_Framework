@@ -59,7 +59,7 @@ class User_Controller extends Controller
 </head>
 <body>
     <?php foreach ($users as $user):?>
-       <b>Nome:</b> <?php $user->name;?> <br>
+       <b>Name:</b> <?php $user->name;?> <br>
        <b>Email:</b> <?php $user->email;?> <br>
     <?php endforeach;?>
 </body>
