@@ -12,7 +12,7 @@ This is the controller, and  using some methods of the Persistence class.
 
 ````php
 
-# Exemplo of the Model class
+# Exemple of the Model class
 class User extends Model
 {
     protected $table = 'user';
@@ -22,7 +22,7 @@ class User extends Model
 
 ````php
 
-# Exemplo of the Controller class
+# Exemple of the Controller class
 class User_Controller extends Controller 
 {
     protected $user;
