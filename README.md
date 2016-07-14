@@ -1,7 +1,7 @@
 # Ofir_Framework-0.1
 
 # Description
-Welcome to Ofir. This is a Project Development of the PHP-Framework. Developed of  student to students. What do you think about contribute with this project?
+Welcome to Ofir. This is a Project Development of the PHP-Framework. Developed by student to students. What do you think about contribute with this project?
 
 <p>
 The Ofir is very easy to use. You just need instal and run in your server. <br>
