@@ -15,9 +15,9 @@ if (array_key_exists(1, $separator))
     # Verify if exist Controller or Method in the url
     if (array_key_exists(1, $the_controller_name)) {
 
-         $method_name_only = $the_controller_name[1] .= '&';
-         $method_name_only = explode('&', $method_name_only);
-         $real_method_name = $method_name_only[0]; 
+        $method_name_only = $the_controller_name[1] .= '&';
+        $method_name_only = explode('&', $method_name_only);
+        $real_method_name = $method_name_only[0]; 
 
     } else {
         $massage_404 = 'The name of the Controller or the name of the Method can be wrong or not exist';

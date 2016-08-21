@@ -61,19 +61,31 @@ class Persistence
 		$this->Persistence = "SELECT * FROM {$this->table}";
 		return $this;
 	}
+    
+    /**
+    * Using this method you can write Sql query of way that you want
+    *
+    * @param query : string : Your query
+    * @return type_return : string true or false
+    * @return Array of Objects or Array of Arrays
+    */
 
-	public function where($field = false, $operator = false, $value = false)
+	public function query($query, $type_return = null)
 	{
-		$this->Persistence .= " WHERE {$field} {$operator} ?"; 
-		$this->field[] = $value;
-		return $this;
-	}
+		$type_return = trim(strtolower($type_return));
 
-	public function and_too($field = false, $operator = false, $value = false)
-	{
-		$this->Persistence .= " AND {$field} {$operator} ?";
-		$this->field[] = $value;
-		return $this;
+		$sql = $this->db->query($query);
+		$sql->execute();
+
+		if ($type_return == "array") {
+			return $sql->fetch(PDO::FETCH_ASSOC);
+		} 
+
+		if ($type_return == "obj") {
+			return $sql->fetch(PDO::FETCH_OBJ);
+		} 
+
+		return $sql->fetch(PDO::FETCH_OBJ);
 	}
     
     /**
@@ -134,33 +146,6 @@ class Persistence
 		return $this;
 	} 
 
-	public function prepare($sql = false)
-	{
-		$values = null;
-		foreach ($this->field as $itens) {
-			$values .= "{$itens}, ";
-		}
-        
-        $values_size = strlen($values);
-		$token = substr($values, -$values_size, -2);
-        
-        $real_values = array();
-		foreach ($this->field as $key => $itens) {
-			$comma = explode(', ', $values);
-			$real_values[] = $comma[$key];
-		}
-
-		$sql = $this->db->prepare($this->Persistence);
-        
-		if ( ! empty($this->field)) {
-			$sql->execute($real_values);
-		} else {
-			$sql->execute();
-		}
-		
-		return $sql->fetchAll(PDO::FETCH_OBJ);
-	}
-    
     /**
     * Save the data in the database
     *
