@@ -18,9 +18,9 @@ trait database_config
             self::$password = null; 
         } else {
             # Put your credentials of database localhost here
-            self::$host = 'localhost';
-            self::$dbname = 'radius';
-            self::$username = 'root';
+            self::$host = '';
+            self::$dbname = '';
+            self::$username = '';
             self::$password = '';
         }
     }

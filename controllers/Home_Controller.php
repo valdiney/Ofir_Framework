@@ -5,17 +5,17 @@ class Home_Controller extends Controller
     protected $view;
     protected $layout_pricipal;
 
-    public function __construct(Array $models)
+    public function __construct()
     {
-        $this->user = $models['User'];
+        $this->user = $this->model('User');
         $this->view = $this->view();
-        $this->layout_pricipal =  $this->view->layout('default_layout');
+        $this->layout_pricipal = $this->view->layout('default_layout');
     }
 
     public function index()
     {   
         $this->layout_pricipal;
-    
+
         $title = 'This is Ofir Framework';
         return $this->view->make('home.home', compact('title'));
     }
