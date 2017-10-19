@@ -24,7 +24,7 @@ class User extends Model
 
 ```
 
-<h3>Exemple of the Controller class</h3>
+<h3>Example of the Controller class</h3>
 
 ```php
 
@@ -52,7 +52,7 @@ class User_Controller extends Controller
 
 ```
 
-<h3>Exemple of the View</h3>
+<h3>Example of the View</h3>
 
 ```php
 
