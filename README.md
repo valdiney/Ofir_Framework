@@ -1,6 +1,7 @@
 # Ofir_Framework-0.1
 
 # Description
+
 Welcome to Ofir. This is a Project Development of the PHP-Framework. Developed by student to students. What do you think about contribute with this project?
 
 <p>
@@ -9,10 +10,12 @@ Ofir uses the Model-View-Controller approach, which allows great separation betw
 </p>
 
 # What I need at this moment?
+
 I need to create a powerful class to work with SQL query. My objective is abstracting the SQL language in the Application.
 
-<h4>Exemple of the Model class</h4>
-````php
+<h4>Example of the Model class</h4>
+
+```php
 
 class User extends Model
 {
@@ -21,9 +24,9 @@ class User extends Model
 
 ```
 
-<h3>Exemple of the Controller class</h3>
+<h3>Example of the Controller class</h3>
 
-````php
+```php
 
 class User_Controller extends Controller 
 {
@@ -48,9 +51,10 @@ class User_Controller extends Controller
 }
 
 ```
-<h3>Exemple of the View</h3>
 
-````php
+<h3>Example of the View</h3>
+
+```php
 
 <!DOCTYPE html>
 <html lang="en">
