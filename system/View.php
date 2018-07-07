@@ -9,17 +9,17 @@ class View
 	protected $data = array();
 
 	# to receive the name of the layout that will be used in the controller
-	protected $layout_name = false;
+	protected $layoutName = false;
 
 	# to receive the name of the views that will be used into the layout
 	public $content = null;
 
-	protected $include_files = array();
+	protected $includeFiles = array();
 
-	public function import_files($name)
+	public function importFiles($name)
 	{
-		if (array_key_exists($name, $this->include_files)) {
-			return include($this->include_files[$name]);
+		if (array_key_exists($name, $this->includeFiles)) {
+			return include($this->includeFiles[$name]);
 		} else {
 			echo "<b>(In View) {$name}</b>: <font color='red'> This file not exist, you should verify the name and path of the file.";
 			exit;
@@ -27,7 +27,7 @@ class View
 	}
 
     # Return the array of the values that will be used in the views
-	protected function get_data()
+	protected function getData()
 	{
 		return $this->data;
 	}
@@ -55,10 +55,10 @@ class View
 		}
 
 		# Transforming the operator '.' in operator '='
-		$view_name = self::to_slash($view_name);
+		$view_name = self::toSlash($view_name);
         
         # Passing the values to be used into the views
-		foreach ($this->get_data() as $key => $itens) {
+		foreach ($this->getData() as $key => $itens) {
 			$$key = $itens;
 		}
         
@@ -90,11 +90,11 @@ class View
 		}
 	}
 
-	public function with_files($key_word, $name)
+	public function withFiles($key_word, $name)
 	{
 		$name = str_replace('.', '/', $name);
 		if (file_exists("{$name}.php")) {
-			$this->include_files[$key_word] = "{$name}.php";
+			$this->includeFiles[$key_word] = "{$name}.php";
 		} else {
 			echo "<b>(In Controller) {$name}</b>: <font color='red'> This file not exist, you should verify the name and path of the file";
 			exit;

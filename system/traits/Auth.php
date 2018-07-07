@@ -1,7 +1,7 @@
 <?php 
 trait Auth
 {
-	private function login_verify($data = array())
+	private function loginVerify($data = array())
 	{
 		$data['password'] = Hash::make($data['password']);
 		$query = $this->db->prepare("SELECT * FROM {$this->table} WHERE login = ? AND password = ?");
@@ -9,16 +9,16 @@ trait Auth
 		return $query->rowCount();
 	}
 
-	public function user_exist($data = array())
+	public function userExist($data = array())
 	{
-		if ($this->login_verify($data)) {
+		if ($this->loginVerify($data)) {
 			return true;
 		}
 
 		return false;
 	}
 
-	public function login_exists($login = false)
+	public function loginExists($login = false)
 	{
 		$query = $this->db->prepare("SELECT * FROM {$this->table} WHERE login = ?");
 		$query->execute(array($login));
@@ -30,17 +30,17 @@ trait Auth
 		session_destroy();
 	}
 
-	public function is_not_unique_login($login = null, $user_id_application = null)
+	public function isNotUniqueLogin($login = null, $userIdApplication = null)
 	{
-		if ($this->login_exist($login)) {
+		if ($this->loginExist($login)) {
 			
-			$user_id_from_database = null;
+			$userIdFromDatabase = null;
 
-			foreach ($this->private_where('login', '=', $login) as $itens) {
-				$user_id_from_database = $itens->id;
+			foreach ($this->privateWhere('login', '=', $login) as $itens) {
+				$userIdFromDatabase = $itens->id;
 			}
 
-			if ($user_id_from_database != $user_id_application) {
+			if ($userIdFromDatabase != $userIdApplication) {
 				return true;
 			}
 
@@ -50,7 +50,7 @@ trait Auth
 		return false;
 	}
 
-	private function private_where($field = null, $condition = null, $value = null)
+	private function privateWhere($field = null, $condition = null, $value = null)
 	{
 		$query = $this->db->prepare("SELECT * FROM {$this->table} WHERE {$field} {$condition} ?");
 		$query->execute(array($value));

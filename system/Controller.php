@@ -2,17 +2,17 @@
 class Controller
 {
 	# This methoad load the Library that will be used in the Controller
-	protected function library($path, $library_name, $using_db = false)
+	protected function library($path, $libraryName, $usingDB = false)
 	{
 		# Verify if Library Exist
-		if (file_exists("library/{$path}/{$library_name}.php")) {
+		if (file_exists("library/{$path}/{$libraryName}.php")) {
 
-		    $library = "{$library_name}";
+		    $library = "{$libraryName}";
 		    
             # Include the Library
-			require_once("library/{$path}/{$library_name}.php");
+			require_once("library/{$path}/{$libraryName}.php");
 
-			if ($using_db) {
+			if ($usingDB) {
 				# Instantiante the class Library and passing the Database Connection
 			    return $library = new $library(Database::connect());
 			}
@@ -27,18 +27,18 @@ class Controller
 	}
 
 	# This methoad load the Model that will be used in the Controller
-	protected function model($model_name)
+	protected function model($modelName)
 	{
 		# Path of the Model folder
 		$path = 'models';
 
 		# Verify if Model Exist
-		if (file_exists("{$path}/{$model_name}.php")) {
+		if (file_exists("{$path}/{$modelName}.php")) {
 
-		    $model = "{$model_name}";
+		    $model = "{$modelName}";
 		    
             # Include the Model
-			require_once("{$path}/{$model_name}.php");
+			require_once("{$path}/{$modelName}.php");
 
 			# Instantiante the class Library and passing the Database Connection
 			return $model = new $model(Database::connect());

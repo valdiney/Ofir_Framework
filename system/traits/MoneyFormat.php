@@ -4,7 +4,7 @@
 * This trait is used to work with money format
 */
 
-trait Money_format
+trait MoneyFormat
 {
 	/**
 	* Formatting of numbers to Brazil format
@@ -12,7 +12,7 @@ trait Money_format
 	* @param number : number : The number that will be formatted
 	* @return : number : Formatted Brazilian number
 	*/
-	public static function br_format($number)
+	public static function brFormat($number)
 	{
 		return number_format($number, 2, ',', '.');
 	}

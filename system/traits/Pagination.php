@@ -2,26 +2,26 @@
 trait Pagination
 {
 	# Total items of the tadabase results
-	protected static $total_rows = null;
+	protected static $totalRows = null;
 
 	# Max number of items you want shown per page
-	protected static $per_page = null;
+	protected static $perPage = null;
 
     # Result of the calculate of the total number of page
-	protected static $num_page = null;
+	protected static $numPage = null;
 
 	# Items from database
 	protected static $query = null;
 
-	protected static $next_link = null;
+	protected static $nextLink = null;
 
-	protected static $after_link = null;
+	protected static $afterLink = null;
 
     # Calculate the total of the rows
-	private static function total_rows()
+	private static function totalRows()
 	{
-		self::$total_rows = count(self::$query);
-		return self::$total_rows;
+		self::$totalRows = count(self::$query);
+		return self::$totalRows;
 	}
     
     /**
@@ -32,25 +32,25 @@ trait Pagination
     * @return Array of the object
     */
 
-	public static function paginator($per_page, $db_query)
+	public static function paginator($perPage, $dbQuery)
 	{
 		if (isset($_GET['p'])) {
 			# Get the value from HTTP-GET
-		    $get_page = (int) $_GET['p'];
+		    $getPage = (int) $_GET['p'];
 		}
 		
-		if (empty($get_page)) {
-			$get_page = 1;
+		if (empty($getPage)) {
+			$getPage = 1;
 		}
 
-        self::$query = $db_query;
+        self::$query = $dbQuery;
         
         # Array separator
-		$result = array_chunk($db_query, $per_page);
-		self::$num_page = count($result);
+		$result = array_chunk($dbQuery, $perPage);
+		self::$numPage = count($result);
 
 		# Result of items
-		return $result[$get_page -1];
+		return $result[$getPage -1];
 	}
     
     # Create of the nex link of pagination
@@ -58,25 +58,25 @@ trait Pagination
 	{
 		if (isset($_GET['p'])) {
 			# Get the value from HTTP-GET
-		    $get_page = (int) $_GET['p'];
+		    $getPage = (int) $_GET['p'];
 		}
 		
-		if (empty($get_page)) {
-			$get_page = 1;
+		if (empty($getPage)) {
+			$getPage = 1;
 		}
 
-		if (isset($get_page)) {
-			self::$next_link = $get_page + 1;
+		if (isset($getPage)) {
+			self::$nextLink = $getPage + 1;
 		}
 
-		$next = self::$next_link;
+		$next = self::$nextLink;
 
-		if ($next > self::$num_page) {
-			$next = self::$num_page;
+		if ($next > self::$numPage) {
+			$next = self::$numPage;
 		}
 
-		$controller = Get_url::get_url('controller');
-		$method = Get_url::get_url('method');
+		$controller = Get_url::getUrl('controller');
+		$method = Get_url::getUrl('method');
         
         $url = null;
         
@@ -90,42 +90,42 @@ trait Pagination
 	}
     
     # Create of the after link of pagination
-	public static function after_link()
+	public static function afterLink()
 	{
 		if (isset($_GET['p'])) {
 			# Get the value from HTTP-GET
-		    $get_page = (int) $_GET['p'];
+		    $getPage = (int) $_GET['p'];
 		}
 		
-		if (empty($get_page)) {
-			$get_page = 1;
+		if (empty($getPage)) {
+			$getPage = 1;
 		}
 
-		if (isset($get_page)) {
-			self::$next_link = $get_page + 1;
+		if (isset($getPage)) {
+			self::$nextLink = $getPage + 1;
 		}
 
-		$after = self::$after_link;
-		$min = $get_page - 1;
+		$after = self::$afterLink;
+		$min = $getPage - 1;
 
 		if ($min < 1) {
 			$min = 1;
 		}
 
-		$controller = Get_url::get_url('controller');
-		$method = Get_url::get_url('method');
+		$controller = GetURL::getURL('controller');
+		$method = GetURL::getURL('method');
 
 		$url = "?{$controller}={$method}={$min}";
 		echo "href='{$url}'>";
 	}
 
-	public static function paginate_information()
+	public static function paginateInformation()
 	{
 		$page = $_GET['p'];
-		if ($page >= self::$num_page) {
-			$page = self::$num_page;
+		if ($page >= self::$numPage) {
+			$page = self::$numPage;
 		} 
 
-		return $page . " de " . self::$num_page;
+		return $page . " de " . self::$numPage;
 	}
 }

@@ -1,28 +1,28 @@
 <?php 
-class Private_areas
+class PrivateAreas
 {
-	public static $Private_areas = false;
+	public static $privateAreas = false;
 	public static $status = false;
 
 	private static function utils($option)
 	{
 		$url = $_SERVER['REQUEST_URI'];
         $separator = explode('?', $url);
-        $other_separator = explode('=', $separator[1]);
-        $controller_name = $other_separator[0];
-        $method_name = $other_separator[1];
+        $otherSeparator = explode('=', $separator[1]);
+        $controllerName = $otherSeparator[0];
+        $methodName = $otherSeparator[1];
 
         if ($option == 'method') {
-        	$only_name = explode('&', $method_name);
-        	return $only_name[0];
+        	$onlyName = explode('&', $methodName);
+        	return $onlyName[0];
         }
 
         if ($option == 'controller') {
-        	return $controller_name;
+        	return $controllerName;
         }
 	}
 
-	public static function private_methods($names)
+	public static function privateMethods($names)
 	{
 		foreach ($names as $itens) {
 			if ($itens == self::utils('method')) {
@@ -33,7 +33,7 @@ class Private_areas
 		return new self;
 	}
 
-	public static function private_controllers($names)
+	public static function privateControllers($names)
 	{
 		foreach ($names as $itens) {
 			if ($itens == self::utils('controller')) {
@@ -49,7 +49,7 @@ class Private_areas
 		$path = str_replace('.', '=', $path);
 
 		if (self::$status) {
-			self::$Private_areas .= header("Location:?{$path}");
+			self::$privateAreas .= header("Location:?{$path}");
 		}
 
 		return new self;

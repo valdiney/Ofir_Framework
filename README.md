@@ -28,24 +28,22 @@ class User extends Model
 
 ```php
 
-class User_Controller extends Controller 
+class UserController extends Controller 
 {
     protected $user;
     protected $view;
-    protected $default_layout;
+    protected $defaultLayout;
 
     public function __construct(Array $models, Array $services)
     {
         $this->user = $models['User'];
         $this->view = $this->view();
-        $this->default_layout = $this->view->layout('default_layout');
+        $this->defaultLayout = $this->view->layout('default-layout');
     }
 
     public function index()
     {
-        $this->default_layout
-
-        $users = $this->user->select()->get_all();
+        $users = $this->user->select()->getAll();
         return $this->view->make('home.index', compact('users'));
     }
 }
@@ -54,7 +52,7 @@ class User_Controller extends Controller
 
 <h3>Example of the View</h3>
 
-```php
+```html
 
 <!DOCTYPE html>
 <html lang="en">

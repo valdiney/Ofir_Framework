@@ -13,7 +13,7 @@ trait Redirect
 	public function to($path = false, $variables = false)
 	{
 		$path = str_replace(".", "=", $path);
-		$complete_path = Generating_perfect_url::generating_perfect_url($path, $variables);
+		$complete_path = GeneratingPerfectURL::generatingPerfectURL($path, $variables);
 		header("Location:?{$complete_path}&p=1");
 	}
 

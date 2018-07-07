@@ -12,9 +12,9 @@ trait Helper
     * @param  variables : string : variables and the values of the variables passed via 'HTTP-GET'
     */
 
-	public static function link_to($path = false, $variables = false)
+	public static function linkTo($path = false, $variables = false)
 	{
-		echo "href='?" . Generating_perfect_url::generating_perfect_url($path, $variables) . "&p=1" . "'>";
+		echo "href='?" . GeneratingPerfectURL::generatingPerfectURL($path, $variables) . "&p=1" . "'>";
     }
     
     /**
@@ -26,7 +26,7 @@ trait Helper
 
     public static function action($path = false, $variables = false)
     {
-    	echo 'action="?' . Generating_perfect_url::generating_perfect_url($path, $variables) . '">';
+    	echo 'action="?' . GeneratingPerfectURL::generatingPerfectURL($path, $variables) . '">';
     }
     
     
@@ -40,7 +40,7 @@ trait Helper
     public static function css($path = false)
     {
     	# Transforming the operator '.' in operator '='
-        $path = String_helper::to_slash($path);
+        $path = String_helper::toSlash($path);
     	echo "<link rel='stylesheet' href='public/{$path}.css'></style>";
     }
     
@@ -54,13 +54,13 @@ trait Helper
     public static function script($path = false)
     { 
         # Transforming the operator '.' in operator '='
-        $path = String_helper::to_slash($path);
+        $path = String_helper::toSlash($path);
         echo "<script src='public/{$path}.js'></script>";
     }
 
-    public static function import_once($path)
+    public static function importOnce($path)
     {
-        $path = String_helper::to_slash($path);
+        $path = String_helper::toSlash($path);
         require_once dirname(__DIR__) . "/../{$path}.php";
     }
 }

@@ -3,7 +3,7 @@
 * This trait used to work with string transforming
 */
 
-trait String_helper
+trait StringHelper
 {
 	/**
 	* Transforming the operator '.' in operator '='
@@ -12,7 +12,7 @@ trait String_helper
 	* @return string
 	*/
 	
-	public static function to_slash($value = false)
+	public static function toSlash($value = false)
     {
         return str_replace('.', '/', $value);
     }

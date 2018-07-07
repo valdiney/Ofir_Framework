@@ -1,12 +1,12 @@
 <?php
-trait database_config
+trait DatabaseConfig
 {
     protected static $host;
     protected static $dbname;
     protected static $username;
     protected static $password;
 
-    public static function database_config_attributes()
+    public static function databaseConfigAttributes()
     {
         $host = $_SERVER['HTTP_HOST'];
 

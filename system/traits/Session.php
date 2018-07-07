@@ -18,12 +18,12 @@ trait Session
 		session_start();
 	}
 
-	public static function put_session($name = null, $value = null)
+	public static function putSession($name = null, $value = null)
 	{
 		$_SESSION[$name] = $value;
 	}
 
-	public static function has_session($name = null)
+	public static function hasSession($name = null)
 	{
 		if (isset($_SESSION[$name])) {
 			return true;
@@ -32,7 +32,7 @@ trait Session
 		return false;
 	}
 
-	public static function get_session($name = null)
+	public static function getSession($name = null)
 	{
 		if (isset($_SESSION[$name])) {
 			 return $_SESSION[$name];	

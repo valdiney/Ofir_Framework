@@ -8,7 +8,7 @@
 * @author Valdiney França <valdiney.2@hotmail.com>
 * @version 0.2
 */
-class Password_Generator
+class PasswordGenerator
 {
 	protected static $letters = "abcdefghijlmnopqrstuvwxyzk";
 	protected static $number = 0123456789;
