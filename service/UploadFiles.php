@@ -4,7 +4,7 @@
 **--------------------------------------------------------------------------------------------------
 */
 
-class Upload_Files
+class UploadFiles
 {
 	private $config;
 	private $file;

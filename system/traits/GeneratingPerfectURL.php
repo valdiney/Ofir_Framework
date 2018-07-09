@@ -1,6 +1,6 @@
 <?php 
 
-trait Generating_perfect_url
+trait GeneratingPerfectURL
 {
 	/**
 	* Create a perfect url that can be access the controllers and methods of the controllers
@@ -10,25 +10,25 @@ trait Generating_perfect_url
     * @param  variables : string : variables and the values of the variables passed via 'HTTP-GET'
     */
 
-    public static function generating_perfect_url($path = false, $variables = false)
+    public static function generatingPerfectURL($path = false, $variables = false)
     {
     	# Transforming the operator '.' in operator '='
 		$path = str_replace('.', '=', $path);
 
 		if ($variables) {
-			$variables_collection = null;
+			$variablesCollection = null;
 
 			# Transforming the String for Array, separate by '|'
-			$variables_separator = explode('|', $variables);
+			$variablesSeparator = explode('|', $variables);
 
-			foreach ($variables_separator as $itens) {
+			foreach ($variablesSeparator as $itens) {
 
 				# Transforming Array for String and putting the operator '&' for separate the variables
-				$variables_collection .= "&{$itens}";
+				$variablesCollection .= "&{$itens}";
 			}
             
             # Print the path with the variables via 'HTTP-GET'
-			return $path . $variables_collection;
+			return $path . $variablesCollection;
 
 		} else {
 

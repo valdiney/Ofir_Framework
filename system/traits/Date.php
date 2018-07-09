@@ -5,7 +5,7 @@
 
 trait Date
 {
-	public static function date_format($date = null)
+	public static function dateFormat($date = null)
 	{
         # Converting date to USA standard
 		if (strpos($date, "/")) {
@@ -20,7 +20,7 @@ trait Date
 		}
     }
 
-    public static function date_now($format = null)
+    public static function dateNow($format = null)
     {
     	$format = trim(strtolower($format));
         $format = strtoupper($format);
@@ -36,7 +36,7 @@ trait Date
 
     # This method is used to return a date time, the parameters represent 'continent' and 'city'
     # to be put in time zone
-    public static function date_time($format = false, $your_date = false, $continent = 'America', $city = 'Araguaina')
+    public static function dateTime($format = false, $your_date = false, $continent = 'America', $city = 'Araguaina')
     {
         date_default_timezone_set("{$continent}/{$city}");
         $date = date("Y-m-d H:i:s");
@@ -54,7 +54,7 @@ trait Date
     
     # This method is used to return the time, the parameters represent 'continent' and 'city'
     # to be put in time zone
-    public static function Hour($continent = 'America', $city = 'Araguaina')
+    public static function hour($continent = 'America', $city = 'Araguaina')
 	{
         date_default_timezone_set("{$continent}/{$city}");
         return date("H:i:s");

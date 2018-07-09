@@ -8,12 +8,12 @@
 
 class Database
 {
-    use database_config;
+    use DatabaseConfig;
     private static $pdo;
     
     public static function connect()
     {
-        self::database_config_attributes();
+        self::databaseConfigAttributes();
 
         if ( ! isset($pdo))
         {

@@ -1,8 +1,8 @@
 <?php 
 
-trait Get_url
+trait GetURL
 {
-    public static function get_url($option)
+    public static function getURL($option)
     {
         $url = $_SERVER['REQUEST_URI'];
         $separator = explode('?', $url);

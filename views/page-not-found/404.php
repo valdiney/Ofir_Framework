@@ -15,6 +15,6 @@
 </head>
 <body>
     <!--(massage_404) This massage show you the type of the error about page not found-->
-    <h2><?php echo $massage_404;?></h2>
+    <h2><?php echo $massage404;?></h2>
 </body>
 </html>

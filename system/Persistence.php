@@ -6,7 +6,7 @@
 class Persistence
 {
 	protected $db;
-	public $Persistence = null;
+	public $persistence = null;
 	protected $field = array();
 
 	public function __construct(PDO $pdo)
@@ -15,7 +15,7 @@ class Persistence
 	}
 
 	public function __destruct() {
-		$this->Persistence = " ";
+		$this->persistence = " ";
 		$fields = array();
 	}
 
@@ -49,7 +49,7 @@ class Persistence
     * @return boolean or an array
     */
 
-	public function find_by($field = null, $value = null)
+	public function findBy($field = null, $value = null)
 	{
 		$query = $this->db->prepare("SELECT * FROM {$this->table} WHERE {$field} = ?");
 		$query->execute(array($value));
@@ -94,7 +94,7 @@ class Persistence
     * @return an array of objects
     */
 
-	public function get_all()
+	public function getAll()
 	{
 		$sql = $this->db->prepare($this->Persistence);
 		$sql->execute();
@@ -107,7 +107,7 @@ class Persistence
     * @return an array of objects
     */
 
-	public function get_first()
+	public function getFirst()
 	{
 		$this->Persistence .= " ORDER BY id ASC LIMIT 1";
 		$sql = $this->db->prepare($this->Persistence);
@@ -121,7 +121,7 @@ class Persistence
     * @return an array of objects
     */
 
-	public function get_last()
+	public function getLast()
 	{
 		$this->Persistence .= " ORDER BY id DESC LIMIT 1";
 		$sql = $this->db->prepare($this->Persistence);
@@ -135,7 +135,7 @@ class Persistence
     * @return interger id
     */
 
-	public function get_last_id()
+	public function getLastID()
 	{
 		return $this->db->lastInsertId();
 	}
@@ -252,19 +252,19 @@ class Persistence
     * @return Object
 	*/
 
-	public function join_too($master_table, $master_table_field, $slave_table, $fk_slave)
+	public function joinToo($master_table, $master_table_field, $slave_table, $fk_slave)
 	{
 		$this->Persistence .= " AND {$master_table}.{$master_table_field} INNER JOIN {$slave_table} ON {$slave_table}.{$fk_slave} = {$master_table}.{$master_table_field}";
 		return $this;
 	}
 
-	public function left_join($master_table, $master_table_field, $slave_table, $fk_slave, $fields = false)
+	public function leftJoin($master_table, $master_table_field, $slave_table, $fk_slave, $fields = false)
 	{
 		$this->Persistence = "SELECT {$master_table}.{$master_table_field}, {$fields} FROM {$master_table} LEFT JOIN {$slave_table} ON {$slave_table}.{$fk_slave} = {$master_table}.{$master_table_field}";
 	    return $this;
 	}
 
-	public function left_join_too($master_table, $master_table_field, $slave_table, $fk_slave)
+	public function leftJoinToo($master_table, $master_table_field, $slave_table, $fk_slave)
 	{
 		$this->Persistence .= " AND {$master_table}.{$master_table_field} LEFT JOIN {$slave_table} ON {$slave_table}.{$fk_slave} = {$master_table}.{$master_table_field}";
 		return $this;

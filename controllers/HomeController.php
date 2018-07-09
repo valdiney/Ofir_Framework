@@ -1,5 +1,5 @@
 <?php 
-class Home_Controller extends Controller
+class HomeController extends Controller
 {
     protected $user;
     protected $view;
@@ -9,7 +9,7 @@ class Home_Controller extends Controller
     {
         $this->user = $this->model('User');
         $this->view = $this->view();
-        $this->layout_pricipal = $this->view->layout('default_layout');
+        $this->layout_pricipal = $this->view->layout('default-layout');
     }
 
     public function index()

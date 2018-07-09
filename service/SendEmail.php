@@ -3,7 +3,7 @@
 * Class para trabalhar com envio de Email.
 * @author Valdiney França
 */
-   class Send_Email
+   class SendEmail
    {
       protected $remetente;
       protected $destino;
