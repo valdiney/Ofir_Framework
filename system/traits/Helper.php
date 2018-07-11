@@ -40,7 +40,7 @@ trait Helper
     public static function css($path = false)
     {
     	# Transforming the operator '.' in operator '='
-        $path = String_helper::toSlash($path);
+        $path = StringHelper::toSlash($path);
     	echo "<link rel='stylesheet' href='public/{$path}.css'></style>";
     }
     
@@ -54,13 +54,13 @@ trait Helper
     public static function script($path = false)
     { 
         # Transforming the operator '.' in operator '='
-        $path = String_helper::toSlash($path);
+        $path = StringHelper::toSlash($path);
         echo "<script src='public/{$path}.js'></script>";
     }
 
     public static function importOnce($path)
     {
-        $path = String_helper::toSlash($path);
+        $path = StringHelper::toSlash($path);
         require_once dirname(__DIR__) . "/../{$path}.php";
     }
 }

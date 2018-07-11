@@ -1,9 +1,9 @@
 <?php 
-require_once('traits/String_helper.php');
+require_once('traits/StringHelper.php');
 
 class View
 {
-	use String_helper;
+	use StringHelper;
 
 	# to receive the values passed to view
 	protected $data = array();

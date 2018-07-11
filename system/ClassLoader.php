@@ -21,7 +21,7 @@ class ClassLoader
 		}
 	}
 
-	public function classLoader()
+	public function loader()
 	{
 		foreach ($this->className as $class) {
 			require_once("{$this->dirName}{$class}.php");
@@ -31,7 +31,7 @@ class ClassLoader
 	public function prepareClassToInstantiate()
 	{
 		$this->readClassName();
-		$this->classLoader();
+		$this->loader();
 	
         $objects = array();
 		foreach ($this->className as $className) {
