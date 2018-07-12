@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
 * --------------------------------------------------------------------------
 * This class is used to make the connection with the database
@@ -10,7 +10,7 @@ class Database
 {
     use DatabaseConfig;
     private static $pdo;
-    
+
     public static function connect()
     {
         self::databaseConfigAttributes();

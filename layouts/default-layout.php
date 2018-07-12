@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<?php Helper::css('css.bootstrap');?>
-	<?php Helper::css('css.style');?>
+    <meta charset="UTF-8">
+    <?php Helper::css('css.bootstrap');?>
+    <?php Helper::css('css.style');?>
 
-	<title><?php echo $title;?></title>
+    <title><?php echo $title;?></title>
 </head>
 <body>
 
-	<?php Helper::script('js.jquery');?>
+    <?php Helper::script('js.jquery');?>
     <?php Helper::script('js.bootstrap');?>
 
     <!--Include the content into the layout-->

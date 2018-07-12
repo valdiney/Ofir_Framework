@@ -1,4 +1,4 @@
-<?php 
+<?php
 $url = $_SERVER['REQUEST_URI'];
 $separator = explode('?', $url);
 
@@ -6,18 +6,18 @@ $separator = explode('?', $url);
 $notFoundPath = 'views/page-not-found/404.php';
 
 # Verify if exist a Controller for render the index page
-if (array_key_exists(1, $separator)) 
+if (array_key_exists(1, $separator))
 {
     $theControllerName = explode('=', $separator[1]);
     $controller = ucwords($theControllerName[0]);
     $controllerFirstName = "{$controller}";
-    
+
     # Verify if exist Controller or Method in the url
     if (array_key_exists(1, $theControllerName)) {
 
         $methodNameOnly = $theControllerName[1] .= '&';
         $methodNameOnly = explode('&', $methodNameOnly);
-        $realMethodName = $methodNameOnly[0]; 
+        $realMethodName = $methodNameOnly[0];
 
     } else {
         $massage404 = 'The name of the Controller or the name of the Method can be wrong or not exist';
@@ -25,8 +25,8 @@ if (array_key_exists(1, $separator))
         exit;
     }
 }
-else 
-{   
+else
+{
     # Include the start application file
     require_once('start-application.php');
     $startApplicationBy = str_replace('.', '=', $startApplicationBy);
@@ -52,7 +52,7 @@ if (file_exists("controllers/{$controllerFirstName}Controller.php"))
 
     # Include the Database Class
     require_once("system/database/Database.php");
-    
+
     # Include the Persistence Class
     require_once("system/Persistence.php");
 
@@ -64,30 +64,30 @@ if (file_exists("controllers/{$controllerFirstName}Controller.php"))
 
     # Include the Controller that will be called in the url
     require_once("controllers/{$controllerFirstName}Controller.php");
-    
+
     # full name of controller
     $fullNameController = "{$controllerFirstName}Controller";
-    
+
     # Including Class for loader Model class and Services in controller
     require_once('system/ClassLoader.php');
-    
+
     # Model Instantiate
     $modelLoader = new ClassLoader();
     $modelLoader->setDirClass('models/');
-    
+
     # Service Instantiate
     $serviceLoader = new ClassLoader();
     $serviceLoader->setDirClass('service/');
-    
+
     # Controller Instantiate
     $controllerApp = new $fullNameController($modelLoader->prepareClassToInstantiate(), $serviceLoader->prepareClassToInstantiate());
-    
+
     # Start the Session
     Session::start();
-    
+
     # Include private areas file
     require_once('private-areas.php');
-    
+
     # Verify if the Method exist in the Class controller
     if (method_exists($controllerApp, $realMethodName)) {
 

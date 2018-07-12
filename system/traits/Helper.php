@@ -1,35 +1,35 @@
-<?php 
+<?php
 /**
 * This trait is used to work with some helpers to the application
 */
 
 trait Helper
 {
-	/**
-	* Create the help 'link_to'
+    /**
+    * Create the help 'link_to'
 
-	* @param  path : string : name of the controller and name of the method of the controller
+    * @param  path : string : name of the controller and name of the method of the controller
     * @param  variables : string : variables and the values of the variables passed via 'HTTP-GET'
     */
 
-	public static function linkTo($path = false, $variables = false)
-	{
-		echo "href='?" . GeneratingPerfectURL::generatingPerfectURL($path, $variables) . "&p=1" . "'>";
+    public static function linkTo($path = false, $variables = false)
+    {
+        echo "href='?" . GeneratingPerfectURL::generatingPerfectURL($path, $variables) . "&p=1" . "'>";
     }
-    
-    /**
-	* Create the help 'action'
 
-	* @param  path : string : name of the controller and name of the method of the controller
+    /**
+    * Create the help 'action'
+
+    * @param  path : string : name of the controller and name of the method of the controller
     * @param  variables : string : variables and the values of the variables passed via 'HTTP-GET'
     */
 
     public static function action($path = false, $variables = false)
     {
-    	echo 'action="?' . GeneratingPerfectURL::generatingPerfectURL($path, $variables) . '">';
+        echo 'action="?' . GeneratingPerfectURL::generatingPerfectURL($path, $variables) . '">';
     }
-    
-    
+
+
     /**
     * This method is used for include css in the layout
     *
@@ -39,11 +39,11 @@ trait Helper
 
     public static function css($path = false)
     {
-    	# Transforming the operator '.' in operator '='
+        # Transforming the operator '.' in operator '='
         $path = StringHelper::toSlash($path);
-    	echo "<link rel='stylesheet' href='public/{$path}.css'></style>";
+        echo "<link rel='stylesheet' href='public/{$path}.css'></style>";
     }
-    
+
     /**
     * This method is used for include script in the layout
     *
@@ -52,7 +52,7 @@ trait Helper
     */
 
     public static function script($path = false)
-    { 
+    {
         # Transforming the operator '.' in operator '='
         $path = StringHelper::toSlash($path);
         echo "<script src='public/{$path}.js'></script>";

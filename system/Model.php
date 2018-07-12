@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('traits/StringHelper.php');
 require_once('traits/GeneratingPerfectURL.php');
 require_once('traits/GetURL.php');
@@ -15,14 +15,14 @@ require_once('traits/MoneyFormat.php');
 
 class Model extends Persistence
 {
-	use Input,
-	Helper,
-	Auth,
-	Hash,
-	Redirect,
-	Session,
-	Pagination,
-	GetURL,
-	Date,
-	MoneyFormat;
+    use Input,
+    Helper,
+    Auth,
+    Hash,
+    Redirect,
+    Session,
+    Pagination,
+    GetURL,
+    Date,
+    MoneyFormat;
 }

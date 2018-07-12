@@ -6,78 +6,78 @@
 */
 
 trait Session
-{ 
-	/**
+{
+    /**
     * --------------------------------------------------------------------------
     * Methods about session
     * --------------------------------------------------------------------------
     */
 
-	public static function start()
-	{
-		session_start();
-	}
+    public static function start()
+    {
+        session_start();
+    }
 
-	public static function putSession($name = null, $value = null)
-	{
-		$_SESSION[$name] = $value;
-	}
+    public static function putSession($name = null, $value = null)
+    {
+        $_SESSION[$name] = $value;
+    }
 
-	public static function hasSession($name = null)
-	{
-		if (isset($_SESSION[$name])) {
-			return true;
-		}
+    public static function hasSession($name = null)
+    {
+        if (isset($_SESSION[$name])) {
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	public static function getSession($name = null)
-	{
-		if (isset($_SESSION[$name])) {
-			 return $_SESSION[$name];	
-		}
+    public static function getSession($name = null)
+    {
+        if (isset($_SESSION[$name])) {
+             return $_SESSION[$name];
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	public static function destroy($name = null)
-	{
-		unset($_SESSION[$name]);
-	}
+    public static function destroy($name = null)
+    {
+        unset($_SESSION[$name]);
+    }
 
-	
 
-	/**
+
+    /**
     * --------------------------------------------------------------------------
     * Methods about flash message
     * --------------------------------------------------------------------------
     */
 
-	public static function flash($name = null, $value = null)
-	{   
-		$key = 'flash_' . $name;
-		$_SESSION[$key] = $value;
-	}
+    public static function flash($name = null, $value = null)
+    {
+        $key = 'flash_' . $name;
+        $_SESSION[$key] = $value;
+    }
 
-	public static function has_flash($name = null)
-	{
-		$name = 'flash_' . $name;
-		if (isset($_SESSION[$name])) {
-			return true;
-		}
+    public static function has_flash($name = null)
+    {
+        $name = 'flash_' . $name;
+        if (isset($_SESSION[$name])) {
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	public static function get_flash($name = null)
-	{
-		$name = 'flash_' . $name;
-		if (isset($_SESSION[$name])) {
-			echo $_SESSION[$name];
-			unset($_SESSION[$name]);
-		}
+    public static function get_flash($name = null)
+    {
+        $name = 'flash_' . $name;
+        if (isset($_SESSION[$name])) {
+            echo $_SESSION[$name];
+            unset($_SESSION[$name]);
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

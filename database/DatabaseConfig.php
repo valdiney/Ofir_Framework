@@ -15,7 +15,7 @@ trait DatabaseConfig
             self::$host = null;
             self::$dbname = null;
             self::$username = null;
-            self::$password = null; 
+            self::$password = null;
         } else {
             # Put your credentials of database localhost here
             self::$host = null;

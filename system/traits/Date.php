@@ -1,37 +1,37 @@
-<?php 
+<?php
 /**
 * This trait is working with conversion of date
 */
 
 trait Date
 {
-	public static function dateFormat($date = null)
-	{
+    public static function dateFormat($date = null)
+    {
         # Converting date to USA standard
-		if (strpos($date, "/")) {
-		    $date = explode("/", $date);
-			return $date[2] . "-" . $date[1] . "-" . $date[0];
-		} 
-        
+        if (strpos($date, "/")) {
+            $date = explode("/", $date);
+            return $date[2] . "-" . $date[1] . "-" . $date[0];
+        }
+
         # Converting date to BR standard
         if (strpos($date, "-")) {
-		    $date = explode("-", $date);
-			return $date[2] . "/" . $date[1] . "/" . $date[0];
-		}
+            $date = explode("-", $date);
+            return $date[2] . "/" . $date[1] . "/" . $date[0];
+        }
     }
 
     public static function dateNow($format = null)
     {
-    	$format = trim(strtolower($format));
+        $format = trim(strtolower($format));
         $format = strtoupper($format);
 
-    	if ($format == 'BR') {
-    		return Date('d/m/Y');
-    	}
+        if ($format == 'BR') {
+            return Date('d/m/Y');
+        }
 
-    	if ($format == 'USA' or 'EUA') {
-    		return Date('Y-m-d');
-    	}
+        if ($format == 'USA' or 'EUA') {
+            return Date('Y-m-d');
+        }
     }
 
     # This method is used to return a date time, the parameters represent 'continent' and 'city'
@@ -51,12 +51,12 @@ trait Date
 
         return date($format, strtotime($date));
     }
-    
+
     # This method is used to return the time, the parameters represent 'continent' and 'city'
     # to be put in time zone
     public static function hour($continent = 'America', $city = 'Araguaina')
-	{
+    {
         date_default_timezone_set("{$continent}/{$city}");
         return date("H:i:s");
-	}
+    }
 }
