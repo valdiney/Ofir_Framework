@@ -1,4 +1,4 @@
-<?php 
+<?php
 class HomeController extends Controller
 {
     protected $user;
@@ -13,7 +13,7 @@ class HomeController extends Controller
     }
 
     public function index()
-    {   
+    {
         $this->layout_pricipal;
 
         $title = 'This is Ofir Framework';

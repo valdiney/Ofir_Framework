@@ -1,10 +1,10 @@
-<?php 
+<?php
 class User extends Model
 {
-	protected $table = null;
+    protected $table = null;
 
-	public function teste()
-	{
-		return "Funcionou pow";
-	}
+    public function teste()
+    {
+        return "Funcionou pow";
+    }
 }

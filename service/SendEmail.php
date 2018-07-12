@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
 * Class para trabalhar com envio de Email.
 * @author Valdiney França
@@ -25,14 +25,14 @@
       {
          $this->mensagem = $mensagem;
       }
-      
+
       public function headers()
       {
          $headers = "MIME-Version: 1.0" . "\r\n";
          $headers .= "Content-Type: multipart/mixed" . "\r\n";
          $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-         $headers .= "From: {$this->remetente}" . "\r\n"; 
-         $headers .= "Cc: {$this->remetente}" . "\r\n"; 
+         $headers .= "From: {$this->remetente}" . "\r\n";
+         $headers .= "Cc: {$this->remetente}" . "\r\n";
       }
       public function sendThisEmail()
       {
