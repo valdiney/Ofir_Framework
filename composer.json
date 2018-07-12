@@ -1,0 +1,16 @@
+{
+	"name": "valdiney/ofir_framework",
+	"description": "This is the Ofir Development, a simple PHP framework.",
+	"type": "project",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Valdiney França",
+			"email": "valdiney.2@hotmail.com"
+		}
+	],
+	"minimum-stability": "stable",
+	"require": {
+		"vlucas/phpdotenv": "^2.5"
+	}
+}
