@@ -1,5 +1,6 @@
 <?php
-trait Hash
+
+class Hash
 {
     public static function make($password = null)
     {

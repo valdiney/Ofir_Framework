@@ -1,9 +1,9 @@
 <?php
 /**
-* This trait is working with conversion of date
+* This class is working with conversion of date
 */
 
-trait Date
+class Date
 {
     public static function dateFormat($date = null)
     {

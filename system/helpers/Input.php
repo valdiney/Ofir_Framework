@@ -1,9 +1,9 @@
 <?php
 /**
-* This trait is used to work with another way of to access superglobals of the PHP
+* This class is used to work with another way of to access superglobals of the PHP
 */
 
-trait Input
+class Input
 {
     /**
     * This method is used to access superglobals $_POST

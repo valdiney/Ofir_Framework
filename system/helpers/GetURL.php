@@ -1,6 +1,7 @@
 <?php
 
-trait GetURL
+
+class GetURL
 {
     public static function getURL($option)
     {

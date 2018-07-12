@@ -1,6 +1,6 @@
 <?php
 
-trait GeneratingPerfectURL
+class GeneratingPerfectURL
 {
     /**
     * Create a perfect url that can be access the controllers and methods of the controllers

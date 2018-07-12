@@ -3,7 +3,7 @@
 * This trait is used to work with some helpers to the application
 */
 
-trait Helper
+class Helper
 {
     /**
     * Create the help 'link_to'

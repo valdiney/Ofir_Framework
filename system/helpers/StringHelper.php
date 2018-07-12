@@ -1,9 +1,9 @@
 <?php
 /**
-* This trait used to work with string transforming
+* This class used to work with string transforming
 */
 
-trait StringHelper
+class StringHelper
 {
     /**
     * Transforming the operator '.' in operator '='

@@ -1,5 +1,6 @@
 <?php
-trait Auth
+
+class Auth
 {
     private function loginVerify($data = array())
     {

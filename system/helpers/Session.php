@@ -1,11 +1,11 @@
 <?php
 /**
-* This trait is used to work session in the system
+* This class is used to work session in the system
 * @author Valdiney França <valdiney.2@hotmail.com>
 * @version 0.1
 */
 
-trait Session
+class Session
 {
     /**
     * --------------------------------------------------------------------------

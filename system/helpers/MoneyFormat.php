@@ -1,10 +1,10 @@
 <?php
 
 /**
-* This trait is used to work with money format
+* This class is used to work with money format
 */
 
-trait MoneyFormat
+class MoneyFormat
 {
     /**
     * Formatting of numbers to Brazil format

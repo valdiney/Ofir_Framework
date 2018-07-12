@@ -1,5 +1,6 @@
 <?php
-trait Pagination
+
+class Pagination
 {
     # Total items of the tadabase results
     protected static $totalRows = null;
