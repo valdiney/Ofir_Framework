@@ -1,19 +1,19 @@
-# Ofir_Framework-0.1
+# Ofir Framework
 
 # Description
 
 Welcome to Ofir. This is a Project Development of the PHP-Framework. Developed by student to students. What do you think about contribute with this project?
 
-<p>
 The Ofir is very easy to use. You just need install and run in your server. <br>
 Ofir uses the Model-View-Controller approach, which allows great separation between logic and presentation. 
-</p>
 
 # What I need at this moment?
 
 I need to create a powerful class to work with SQL query. My objective is abstracting the SQL language in the Application.
 
-<h4>Example of the Model class</h4>
+# Examples
+
+### Example of the Model class:
 
 ```php
 
@@ -24,48 +24,47 @@ class User extends Model
 
 ```
 
-<h3>Example of the Controller class</h3>
+### Example of the Controller class:
 
 ```php
 
 class UserController extends Controller 
 {
-    protected $user;
+    protected $users;
     protected $view;
-    protected $defaultLayout;
 
-    public function __construct(Array $models, Array $services)
+    public function __construct()
     {
-        $this->user = $models['User'];
-        $this->view = $this->view();
-        $this->defaultLayout = $this->view->layout('default-layout');
+        $this->users = $this->model('Users');
     }
 
     public function index()
     {
-        $users = $this->user->select()->getAll();
-        return $this->view->make('home.index', compact('users'));
+        $title = 'All users';
+        $users = $this->users->select()->getAll();
+        return $this->view('home.index', compact('title', 'users'));
     }
 }
 
 ```
 
-<h3>Example of the View</h3>
+### Example of the View:
 
 ```html
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User Page</title>
-</head>
-<body>
-    <?php foreach ($users as $user):?>
-       <b>Name:</b> <?php $user->name;?> <br>
-       <b>Email:</b> <?php $user->email;?> <br>
-    <?php endforeach;?>
-</body>
-</html>
+<?php foreach ($users as $user): ?>
+    <b>Name:</b> <?php $user->name;?> <br>
+    <b>Email:</b> <?php $user->email;?> <br>
+<?php endforeach; ?>
 
 ```
+
+#### then...
+
+Accessing the url `http://[site.example]/users/`, you will see the all users from you database.
+
+
+# Changelog:
+
+- [v2.1.0](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.0.0) - A new version has been created.
+- [v1.0.0](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v1.0.0) 
