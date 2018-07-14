@@ -7,7 +7,7 @@ class Route
     protected static $view       = null;
     protected static $error      = null;
 
-    protected static $viewNotFound = 'views/erros/404-page-not-found.php';
+    protected static $viewNotFound = 'erros/404-page-not-found';
 
     protected static $messages = [
         1 => "The name of the Controller or the name of the Method can be wrong or not exist.",
@@ -25,6 +25,7 @@ class Route
         $BRANCH = explode('/', $BRANCH);
         self::configureActualController($BRANCH);
         self::configureActualMethod($BRANCH);
+        self::configureActualView();
     }
 
     /**
@@ -44,7 +45,7 @@ class Route
             !($method = self::verifyIsMethod('HomeController', $BRANCH[0]))) {
             $controller   = "ErrorController";
             self::$error  = "404";
-            self::$view   = "404-page-not-found";
+            self::$view   = self::$viewNotFound;
             self::$method = "pageNotFound";
         }
         if (isset($method)) {
@@ -90,7 +91,7 @@ class Route
         }
         self::$controller = "ErrorController";
         self::$error      = "404";
-        self::$view       = "404-page-not-found";
+        self::$view       = self::$viewNotFound;
         self::$method     = "pageNotFound";
     }
 
@@ -111,7 +112,13 @@ class Route
             return $withoutRequestMethod;
         }
         return null;
-    }
+	}
+
+	protected static function configureActualView() {
+		$controller = preg_replace('/(.*)Controller/', "$1", self::$controller);
+		$view = str_replace(REQUEST_METHOD, '', self::$method);
+		$view = "{$controller}/{$view}";
+	}
 
     /**
      * Turn an dashed string to camelCase
