@@ -31,7 +31,7 @@ class Route
 	 * @return void
 	 */
 	protected static function configureActualController(Array $BRANCH) {
-		$controller = $BRANCH[0];
+		$controller = self::dashesToCamelCase($BRANCH[0]);
 		if (count($BRANCH)===1 and $BRANCH[0]==='') {
 			$controller = 'Home';
 		}
@@ -45,6 +45,22 @@ class Route
 		$controller = class_exists($classVerify)? ucwords($controller): 'Home';
 
 		var_dump($controller);
+	}
+
+	/**
+	 * Turn an dashed string to camelCase
+	 *
+	 * @param String $value
+	 * @param Bool $capitalizeFirstCharacter
+	 * @return String
+	 */
+	protected static function dashesToCamelCase(String $value, Bool $capitalizeFirstCharacter=false): String
+	{
+		$response = str_replace(' ', '', ucwords(str_replace('-', ' ', $value)));
+		if (!$capitalizeFirstCharacter) {
+			$response[0] = strtolower($response[0]);
+		}
+		return $response;
 	}
 
 }
