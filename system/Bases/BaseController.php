@@ -28,25 +28,14 @@ class BaseController
     }
 
     # This methoad load the Model that will be used in the Controller
-    protected function model($modelName) {
-        # Path of the Model folder
-        $path = 'models';
-
+    protected function model(String $model) {
         # Verify if Model Exist
-        if (file_exists("{$path}/{$modelName}.php")) {
-
-            $model = "{$modelName}";
-
-            # Include the Model
-            require_once("{$path}/{$modelName}.php");
-
+        if (class_exists($model)) {
             # Instantiante the class Library and passing the Database Connection
-            return $model = new $model(Database::connect());
-
-        } else {
-            echo "This Model not exist in ( <b>{$path}</b> ) folder.";
-            exit();
-        }
+            return new $model(Database::connect());
+		}
+		echo "The Model `{$model}` not exists!";
+		exit();
     }
 
 	public function finalyze() {
