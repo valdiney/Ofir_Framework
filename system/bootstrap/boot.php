@@ -11,6 +11,11 @@ require_once("defines.php");
 # init the Routing
 Route::init();
 
+# initialize the Brain\Core
+Core::init();
+
+exit;
+
 # Path to pages not fould (404)
 $notFoundPath = 'views/page-not-found/404.php';
 
