@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends BaseController
+class ErrorController extends BaseController
 {
 	public function controllerNotFound() {
 		$message = 'controller not found';
