@@ -41,9 +41,6 @@ if ($BASE[strlen($BASE)-1] !== '/') {
 	$BASE .= "/";
 }
 
-# Branch is the URI with dots
-$BRANCH = str_replace('/', '.', $URI);
-
 # this is the url base of this project
 define('BASE',   $BASE);
 
@@ -59,4 +56,4 @@ define('METHOD', $METHOD);
 # this is the branch that someone is tryng to access:
 # users, users/test, about...
 # empty branch is like home route
-define('BRANCH', $BRANCH);
+define('BRANCH', $URI);
