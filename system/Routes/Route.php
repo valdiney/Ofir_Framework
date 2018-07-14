@@ -5,9 +5,8 @@ class Route
     public static $controller = null;
     public static $method     = null;
 
-	public static $view         = null;
-	protected static $viewDir      = 'sources/views/';
-	protected static $viewNotFound = 'errors/404-page-not-found';
+	public static $view    = null;
+	public static $viewDir = 'sources/views/';
 
     protected static $messages = [
         1 => "The name of the Controller or the name of the Method can be wrong or not exist.",
@@ -43,7 +42,6 @@ class Route
         if ($controller==null and
             !($method = self::verifyIsMethod('HomeController', $BRANCH[0]))) {
             $controller   = "ErrorController";
-            self::$view   = self::$viewNotFound;
             self::$method = "controllerNotFound";
         }
         if (isset($method)) {
@@ -94,7 +92,6 @@ class Route
             return;
         }
         self::$controller = "ErrorController";
-        self::$view       = self::$viewNotFound;
         self::$method     = "methodNotFound";
     }
 
