@@ -15,7 +15,7 @@
     <!--Include the content into the layout-->
     <?php require_once($this->content);?>
 
-	<footer>
+	<footer class="text-center">
 		<em>I'm a secondary layout.</em>
 	</footer>
 

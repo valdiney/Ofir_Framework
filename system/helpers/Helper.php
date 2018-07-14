@@ -41,7 +41,7 @@ class Helper
     {
         # Transforming the operator '.' in operator '='
         $path = StringHelper::toSlash($path);
-        echo "<link rel='stylesheet' href='public/{$path}.css'></style>";
+        echo "<link rel='stylesheet' href='{$path}.css'></style>";
     }
 
     /**
@@ -55,7 +55,7 @@ class Helper
     {
         # Transforming the operator '.' in operator '='
         $path = StringHelper::toSlash($path);
-        echo "<script src='public/{$path}.js'></script>";
+        echo "<script src='{$path}.js'></script>";
     }
 
     public static function importOnce($path)
