@@ -4,12 +4,11 @@ class HomeController extends BaseController
 {
     protected $user;
     protected $view;
-    protected $layoutPrincipal;
+	protected $layout = 'secondary';
 
     public function __construct()
     {
         $this->user = $this->model('Users');
-        $this->layoutPrincipal = $this->layout('default-layout');
     }
 
     public function index()
@@ -18,8 +17,8 @@ class HomeController extends BaseController
         return $this->view('home.home', compact('title'));
 	}
 
-	public function teste() {
+	public function test() {
 		$title = 'Test';
-        return $this->view('home.teste', compact('title'));
+        return $this->layout('secondary')->view('home.teste', compact('title'));
 	}
 }

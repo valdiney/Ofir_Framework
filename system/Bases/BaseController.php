@@ -3,6 +3,17 @@
 class BaseController
 {
 
+    # to receive the values passed to view
+    protected $data = array();
+
+    # to receive the name of the layout that will be used in the controller
+    protected $masterLayout = 'default';
+
+    # to receive the name of the views that will be used into the layout
+    public $content = null;
+
+    protected $includeFiles = array();
+
     # This methoad load the Library that will be used in the Controller
     protected function library($path, $libraryName, $usingDB = false) {
         # Verify if Library Exist
@@ -42,17 +53,6 @@ class BaseController
 		//
 	}
 
-    # to receive the values passed to view
-    protected $data = array();
-
-    # to receive the name of the layout that will be used in the controller
-    protected $layout = 'default-layout';
-
-    # to receive the name of the views that will be used into the layout
-    public $content = null;
-
-    protected $includeFiles = array();
-
     public function importFiles($name)
     {
         if (array_key_exists($name, $this->includeFiles)) {
@@ -71,7 +71,7 @@ class BaseController
     # Receive the name and the path of the layout
     public function layout($layout = false)
     {
-		$this->layout = $layout;
+		$this->masterLayout = $layout;
 		return $this;
     }
 
@@ -108,13 +108,13 @@ class BaseController
 		$this->content = $view;
 
 		# Verify if the method are using a layout
-		if ($this->layout !== null) {
-			$this->layout = __DIR__ ."/../../sources/layouts/{$this->layout}.php";
+		if ($this->masterLayout !== null) {
+			$this->masterLayout = __DIR__ ."/../../sources/layouts/{$this->masterLayout}/layout.php";
 			# Verify if the layout exist in the layout folder
-			if (file_exists($this->layout)) {
+			if (file_exists($this->masterLayout)) {
 				# Include the layout
 				$this->content = $view;
-				require_once($this->layout);
+				require_once($this->masterLayout);
 				exit;
 			}
 		}
