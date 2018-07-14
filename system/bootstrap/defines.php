@@ -51,7 +51,7 @@ define('PATH', $PATH);
 define('SCHEME', $SCHEME);
 
 # this is the method of the project: get, post, put...
-define('REQUEST_METHOD', $METHOD);
+define('REQUEST_METHOD', $REQUEST_METHOD);
 
 # this is the branch that someone is tryng to access:
 # users, users/test, about...
