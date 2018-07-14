@@ -14,13 +14,13 @@
             "system/bootstrap/boot.php"
         ],
         "classmap": [
-            "system/"
+			"system/",
+			"sources/controllers/",
+			"sources/models/",
+			"sources/services/"
         ],
         "psr-4": {
-            "Ofir\\" :              "system/",
-            "Ofir\\Controllers\\" : "sources/controllers/",
-            "Ofir\\Models\\" :      "sources/models/",
-            "Ofir\\Services\\" :    "sources/services/"
+            "Ofir\\" : "system/"
         }
     },
     "minimum-stability": "stable",
