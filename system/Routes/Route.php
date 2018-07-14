@@ -35,16 +35,22 @@ class Route
 		if (count($BRANCH)===1 and $BRANCH[0]==='') {
 			$controller = 'Home';
 		}
-		$classVerify = ucwords($controller)."Controller";
 
-		# if class not exists (e.g.: TestController, HomeController...) then class is Home
-		if (class_exists($classVerify)) {
-			$controller = ucwords($controller);
-		}
-
-		$controller = class_exists($classVerify)? ucwords($controller): 'Home';
+		$controller = self::verifyClassExists($controller)? ucfirst($controller): 'Home';
+		$controller = "{$controller}Controller";
 
 		var_dump($controller);
+	}
+
+	/**
+	 * if class not exists (e.g.: TestController, HomeController...) then class is Home
+	 *
+	 * @param string $name
+	 * @return String
+	 */
+	protected static function verifyClassExists(string $name): String {
+		$classVerify = ucwords($controller)."Controller";
+		return class_exists($classVerify);
 	}
 
 	/**
