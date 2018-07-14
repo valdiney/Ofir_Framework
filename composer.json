@@ -9,6 +9,11 @@
 			"email": "valdiney.2@hotmail.com"
 		}
 	],
+	"autoload": {
+		"files": [
+			"system/bootstrap/boot.php"
+		]
+	},
 	"minimum-stability": "stable",
 	"require": {
 		"vlucas/phpdotenv": "^2.5"
