@@ -1,27 +1,30 @@
 {
-	"name": "valdiney/ofir_framework",
-	"description": "This is the Ofir Development, a simple PHP framework.",
-	"type": "project",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Valdiney França",
-			"email": "valdiney.2@hotmail.com"
-		}
-	],
-	"autoload": {
-		"files": [
-			"system/bootstrap/boot.php"
-		],
-		"classmap": [
-			"system/"
-		],
-		"psr-4": {
-			"Ofir\\" : "system/"
-		}
-	},
-	"minimum-stability": "stable",
-	"require": {
-		"vlucas/phpdotenv": "^2.5"
-	}
+    "name": "valdiney/ofir_framework",
+    "description": "This is the Ofir Development, a simple PHP framework.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Valdiney França",
+            "email": "valdiney.2@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "system/bootstrap/boot.php"
+        ],
+        "classmap": [
+            "system/"
+        ],
+        "psr-4": {
+            "Ofir\\" :              "system/",
+            "Ofir\\Controllers\\" : "sources/controllers/",
+            "Ofir\\Models\\" :      "sources/models/",
+            "Ofir\\Services\\" :    "sources/services/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "vlucas/phpdotenv": "^2.5"
+    }
 }
