@@ -12,7 +12,13 @@
 	"autoload": {
 		"files": [
 			"system/bootstrap/boot.php"
-		]
+		],
+		"classmap": [
+			"system/"
+		],
+		"psr-4": {
+			"Ofir\\" : "system/"
+		}
 	},
 	"minimum-stability": "stable",
 	"require": {
