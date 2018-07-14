@@ -19,5 +19,9 @@ class HomeController extends BaseController
 
         $title = 'This is Ofir Framework';
         return $this->view->make('home.home', compact('title'));
-    }
+	}
+
+	public function teste() {
+		echo 'teste';
+	}
 }
