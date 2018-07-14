@@ -115,9 +115,14 @@ class Route
 	}
 
 	protected static function configureActualView() {
-		$controller = preg_replace('/(.*)Controller/', "$1", self::$controller);
-		$view = str_replace(REQUEST_METHOD, '', self::$method);
-		$view = "{$controller}/{$view}";
+		if (self::$view==null) {
+			$controller = preg_replace('/(.*)Controller/', "$1", self::$controller);
+			$controller  = self::camelCaseToDashes($controller);
+			$view = str_replace(REQUEST_METHOD, '', self::$method);
+			$view = self::camelCaseToDashes($view);
+			$view = "{$controller}/{$view}";
+		}
+		var_dump($view);
 	}
 
     /**
@@ -134,6 +139,11 @@ class Route
             $response[0] = strtolower($response[0]);
         }
         return $response;
+	}
+
+    protected static function camelCaseToDashes(String $value): String
+    {
+		return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $value));
     }
 
 }
