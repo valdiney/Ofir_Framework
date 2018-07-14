@@ -41,7 +41,7 @@ class Route
 			$controller = "Home";
 		}
 		$controller = self::verifyControllerExists($controller);
-		if ($controller==null) {
+		if ($controller==null or self::verifyIsMethod('HomeController', $BRANCH[0])==null) {
 			$controller   = "ErrorController";
 			self::$error  = "404";
 			self::$view   = "404-page-not-found";
@@ -60,11 +60,25 @@ class Route
 		return class_exists($verify)? $verify: '';
 	}
 
-	protected static function verifyIsMethod(String $name) {
-		$verify = self::dashesToCamelCase($name);
-		$verifyWithRequestMethod = REQUEST_METHOD . self::dashesToCamelCase($name, true);
-		var_dump($verify);
-		var_dump($verifyWithRequestMethod);
+	/**
+	 * Verify if method exists in one controller
+	 *
+	 * @param String $controller
+	 * @param String $method
+	 * @return void
+	 */
+	protected static function verifyIsMethod(String $controller, String $method) {
+		$withRequestMethod    = REQUEST_METHOD . self::dashesToCamelCase($method, true);
+		$withoutRequestMethod = self::dashesToCamelCase($method);
+		var_dump($withRequestMethod);
+		var_dump($withoutRequestMethod);
+		if (method_exists($controller, $withRequestMethod)) {
+			return $withRequestMethod;
+		}
+		if (method_exists($controller, $withoutRequestMethod)) {
+			return $withoutRequestMethod;
+		}
+		return null;
 	}
 
 	/**
