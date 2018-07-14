@@ -20,8 +20,6 @@ if ($documentURI!=='/') {
 # removes the first bar
 $URI = trim($URI, '/');
 
-echo '<pre>';
-
 # get the actual SCRIPT_FILENAME (e.g.: /home/.../site/public/index.php)
 # and removes public/index.php from get path to this project
 $PATH  = $_SERVER['SCRIPT_FILENAME'];
