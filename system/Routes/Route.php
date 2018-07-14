@@ -2,10 +2,10 @@
 
 class Route
 {
-    protected static $controller = null;
-    protected static $method     = null;
+    public static $controller = null;
+    public static $method     = null;
 
-	protected static $view         = null;
+	public static $view         = null;
 	protected static $viewDir      = 'sources/views/';
 	protected static $viewNotFound = 'errors/404-page-not-found';
 
