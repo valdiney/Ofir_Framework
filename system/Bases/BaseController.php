@@ -56,5 +56,9 @@ class BaseController
             require_once('system/View.php');
             return new View();
         }
-    }
+	}
+
+	public function finalyze() {
+		//
+	}
 }
