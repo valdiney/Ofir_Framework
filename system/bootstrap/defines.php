@@ -32,7 +32,7 @@ $PATH .= "/";
 $SCHEME = $_SERVER['REQUEST_SCHEME'];
 
 # lowered method
-$METHOD = strtolower($_SERVER['REQUEST_METHOD']);
+$REQUEST_METHOD = strtolower($_SERVER['REQUEST_METHOD']);
 
 # get actual url
 $BASE = "{$SCHEME}://{$_SERVER['SERVER_NAME']}{$documentURI}";
@@ -51,7 +51,7 @@ define('PATH', $PATH);
 define('SCHEME', $SCHEME);
 
 # this is the method of the project: get, post, put...
-define('METHOD', $METHOD);
+define('REQUEST_METHOD', $METHOD);
 
 # this is the branch that someone is tryng to access:
 # users, users/test, about...
