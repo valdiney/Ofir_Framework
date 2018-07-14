@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
 * --------------------------------------------------------------------------
 * This class is used to make the connection with the database
@@ -8,19 +8,20 @@
 
 class Database
 {
-    use DatabaseConfig;
     private static $pdo;
-    
+
     public static function connect()
     {
-        self::databaseConfigAttributes();
-
-        if ( ! isset($pdo))
+        if (!isset($pdo))
         {
             try
             {
-                self::$pdo = new PDO("mysql:" . "host=" . self::$host . ";" . "dbname=" . self::$dbname, self::$username, self::$password,
-                    array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+				$host     = getenv('HOST_NAME');
+				$username = getenv('HOST_USERNAME');
+				$password = getenv('HOST_PASSWORD');
+				$dbname   = getenv('HOST_DBNAME');
+				self::$pdo = new PDO("mysql:" . "host={$host};dbname={$dbname}", $username, $password,
+					array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
             }
             catch (PDOException $e)
             {
