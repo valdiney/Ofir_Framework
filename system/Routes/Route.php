@@ -31,12 +31,13 @@ class Route
 	 * @return void
 	 */
 	protected static function configureActualController(Array $BRANCH) {
-		$controller = self::dashesToCamelCase($BRANCH[0]);
+		$controller = $BRANCH[0];
+		$controller = $controller? self::dashesToCamelCase($controller): '';
 		if (count($BRANCH)===1 and $BRANCH[0]==='') {
 			$controller = 'Home';
 		}
 
-		$controller = self::verifyClassExists($controller)? ucfirst($controller): 'Home';
+		$controller = self::verifyClassExists($controller);
 		$controller = "{$controller}Controller";
 
 		var_dump($controller);
@@ -48,9 +49,9 @@ class Route
 	 * @param string $name
 	 * @return String
 	 */
-	protected static function verifyClassExists(string $name): String {
-		$classVerify = ucwords($controller)."Controller";
-		return class_exists($classVerify);
+	protected static function verifyControllerExists(string $controller): String {
+		$verify = ucwords($controller)."Controller";
+		return class_exists($verify)? $verify: '';
 	}
 
 	/**
