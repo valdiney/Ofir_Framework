@@ -1,7 +1,5 @@
 <?php
 
-namespace Ofir\Bases;
-
 class BaseController
 {
     # This methoad load the Library that will be used in the Controller
