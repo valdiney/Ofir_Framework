@@ -1,9 +1,5 @@
 <?php
 
-namespace Ofir\Controllers;
-
-use Ofir\Bases\BaseController as BaseController;
-
 class HomeController extends BaseController
 {
     protected $user;
