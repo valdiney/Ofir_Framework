@@ -1,5 +1,8 @@
 <?php
-class Controller
+
+namespace Ofir\Bases;
+
+class BaseController
 {
     # This methoad load the Library that will be used in the Controller
     protected function library($path, $libraryName, $usingDB = false)
