@@ -41,11 +41,13 @@ class Route
 			$controller = "Home";
 		}
 		$controller = self::verifyControllerExists($controller);
-		if ($controller==null or self::verifyIsMethod('HomeController', $BRANCH[0])==null) {
+		if ($controller==null and
+			!($method = self::verifyIsMethod('HomeController', $BRANCH[0]))) {
 			$controller   = "ErrorController";
 			self::$error  = "404";
 			self::$view   = "404-page-not-found";
 		}
+		self::$method = $method;
 		self::$controller = $controller;
 	}
 
@@ -70,8 +72,6 @@ class Route
 	protected static function verifyIsMethod(String $controller, String $method) {
 		$withRequestMethod    = REQUEST_METHOD . self::dashesToCamelCase($method, true);
 		$withoutRequestMethod = self::dashesToCamelCase($method);
-		var_dump($withRequestMethod);
-		var_dump($withoutRequestMethod);
 		if (method_exists($controller, $withRequestMethod)) {
 			return $withRequestMethod;
 		}
