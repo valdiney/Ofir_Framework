@@ -1,15 +1,13 @@
 <?php
 
-namespace Ofir\Routes;
-
 class Route
 {
-	protected $controller = null;
-	protected $method     = null;
+	protected static $controller = null;
+	protected static $method     = null;
 
-	protected $viewNotFound = 'views/erros/404-page-not-found.php';
+	protected static $viewNotFound = 'views/erros/404-page-not-found.php';
 
-	protected $messages = [
+	protected static $messages = [
 		1 => "The name of the Controller or the name of the Method can be wrong or not exist.",
 		2 => "The Controller '%s'  not exist.",
 		3 => "The Method '%s' not exist on Controller '%s'.",
@@ -20,6 +18,8 @@ class Route
 	 *
 	 * @return void
 	 */
-	public static function init() {}
+	public static function init() {
+		var_dump(BRANCH);
+	}
 
 }
