@@ -19,7 +19,32 @@ class Route
 	 * @return void
 	 */
 	public static function init() {
-		var_dump(BRANCH);
+		$BRANCH = BRANCH;
+		$BRANCH = explode('/', $BRANCH);
+		self::configureActualController($BRANCH);
+	}
+
+	/**
+	 * Configure the actual controller from actual that url
+	 *
+	 * @param Array $BRANCH
+	 * @return void
+	 */
+	protected static function configureActualController(Array $BRANCH) {
+		$controller = $BRANCH[0];
+		if (count($BRANCH)===1 and $BRANCH[0]==='') {
+			$controller = 'Home';
+		}
+		$classVerify = ucwords($controller)."Controller";
+
+		# if class not exists (e.g.: TestController, HomeController...) then class is Home
+		if (class_exists($classVerify)) {
+			$controller = ucwords($controller);
+		}
+
+		$controller = class_exists($classVerify)? ucwords($controller): 'Home';
+
+		var_dump($controller);
 	}
 
 }
