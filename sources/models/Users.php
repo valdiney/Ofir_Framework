@@ -1,5 +1,6 @@
 <?php
-class User extends Model
+
+class Users extends BaseModel
 {
     protected $table = null;
 
