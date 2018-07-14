@@ -4,10 +4,9 @@ class Route
 {
     protected static $controller = null;
     protected static $method     = null;
-    protected static $view       = null;
-    protected static $error      = null;
 
-    protected static $viewNotFound = 'erros/404-page-not-found';
+	protected static $view       = null;
+    protected static $viewNotFound = 'errors/404-page-not-found';
 
     protected static $messages = [
         1 => "The name of the Controller or the name of the Method can be wrong or not exist.",
@@ -25,7 +24,6 @@ class Route
         $BRANCH = explode('/', $BRANCH);
         self::configureActualController($BRANCH);
         self::configureActualMethod($BRANCH);
-        self::configureActualView();
     }
 
     /**
@@ -44,9 +42,8 @@ class Route
         if ($controller==null and
             !($method = self::verifyIsMethod('HomeController', $BRANCH[0]))) {
             $controller   = "ErrorController";
-            self::$error  = "404";
             self::$view   = self::$viewNotFound;
-            self::$method = "pageNotFound";
+            self::$method = "controllerNotFound";
         }
         if (isset($method)) {
             self::$method = $method;
@@ -66,6 +63,12 @@ class Route
         return class_exists($verify)? $verify: '';
     }
 
+	/**
+	 * Find actual method from the actual url
+	 *
+	 * @param Array $BRANCH
+	 * @return void
+	 */
     protected static function configureActualMethod(Array $BRANCH) {
         if (self::$method !== null) {
             return;
@@ -90,9 +93,8 @@ class Route
             return;
         }
         self::$controller = "ErrorController";
-        self::$error      = "404";
         self::$view       = self::$viewNotFound;
-        self::$method     = "pageNotFound";
+        self::$method     = "methodNotFound";
     }
 
     /**
@@ -114,17 +116,6 @@ class Route
         return null;
 	}
 
-	protected static function configureActualView() {
-		if (self::$view==null) {
-			$controller = preg_replace('/(.*)Controller/', "$1", self::$controller);
-			$controller  = self::camelCaseToDashes($controller);
-			$view = str_replace(REQUEST_METHOD, '', self::$method);
-			$view = self::camelCaseToDashes($view);
-			$view = "{$controller}/{$view}";
-		}
-		var_dump($view);
-	}
-
     /**
      * Turn an dashed string to camelCase
      *
@@ -141,6 +132,12 @@ class Route
         return $response;
 	}
 
+	/**
+	 * Turn camelCase string to an dashed
+	 *
+	 * @param String $value
+	 * @return String
+	 */
     protected static function camelCaseToDashes(String $value): String
     {
 		return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $value));
