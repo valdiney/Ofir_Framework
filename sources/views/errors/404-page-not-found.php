@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Page not fould</title>
+<?php if (getenv('APP_ENV')==='production') { ?>
 
-    <style>
-    h2 {
-        font-family:arial;
-        display:block;
-        text-align:center;
-    }
-    </style>
+	<h1>An error has been occured!</h1>
+	<h2>Contact the admin.</h2>
 
-</head>
-<body>
-    <!--(massage_404) This massage show you the type of the error about page not found-->
-    <h2><?php echo $massage404;?></h2>
-</body>
-</html>
+<?php } else { ?>
+
+	<h1>An error has been occured!</h1>
+	<h2><?php echo $message;?></h2>
+
+<?php } ?>
