@@ -5,8 +5,9 @@ class Route
     protected static $controller = null;
     protected static $method     = null;
 
-	protected static $view       = null;
-    protected static $viewNotFound = 'errors/404-page-not-found';
+	protected static $view         = null;
+	protected static $viewDir      = 'sources/views/';
+	protected static $viewNotFound = 'errors/404-page-not-found';
 
     protected static $messages = [
         1 => "The name of the Controller or the name of the Method can be wrong or not exist.",
