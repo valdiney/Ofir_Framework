@@ -4,6 +4,8 @@ class Route
 {
 	protected static $controller = null;
 	protected static $method     = null;
+	protected static $view       = null;
+	protected static $error      = null;
 
 	protected static $viewNotFound = 'views/erros/404-page-not-found.php';
 
@@ -22,6 +24,8 @@ class Route
 		$BRANCH = BRANCH;
 		$BRANCH = explode('/', $BRANCH);
 		self::configureActualController($BRANCH);
+		# removes the first child
+		array_shift($BRANCH);
 	}
 
 	/**
@@ -34,13 +38,15 @@ class Route
 		$controller = $BRANCH[0];
 		$controller = $controller? self::dashesToCamelCase($controller): '';
 		if (count($BRANCH)===1 and $BRANCH[0]==='') {
-			$controller = 'Home';
+			$controller = "Home";
 		}
-
-		$controller = self::verifyClassExists($controller);
-		$controller = "{$controller}Controller";
-
-		var_dump($controller);
+		$controller = self::verifyControllerExists($controller);
+		if ($controller==null) {
+			$controller   = "ErrorController";
+			self::$error  = "404";
+			self::$view   = "404-page-not-found";
+		}
+		self::$controller = $controller;
 	}
 
 	/**
@@ -49,9 +55,16 @@ class Route
 	 * @param string $name
 	 * @return String
 	 */
-	protected static function verifyControllerExists(string $controller): String {
+	protected static function verifyControllerExists(String $controller): String {
 		$verify = ucwords($controller)."Controller";
 		return class_exists($verify)? $verify: '';
+	}
+
+	protected static function verifyIsMethod(String $name) {
+		$verify = self::dashesToCamelCase($name);
+		$verifyWithRequestMethod = REQUEST_METHOD . self::dashesToCamelCase($name, true);
+		var_dump($verify);
+		var_dump($verifyWithRequestMethod);
 	}
 
 	/**
