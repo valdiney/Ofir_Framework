@@ -4,24 +4,22 @@ class HomeController extends BaseController
 {
     protected $user;
     protected $view;
-    protected $layout_pricipal;
+    protected $layoutPrincipal;
 
     public function __construct()
     {
-        $this->user = $this->model('User');
-        $this->view = $this->view();
-        $this->layout_pricipal = $this->view->layout('default-layout');
+        $this->user = $this->model('Users');
+        $this->layoutPrincipal = $this->layout('default-layout');
     }
 
     public function index()
     {
-        $this->layout_pricipal;
-
         $title = 'This is Ofir Framework';
-        return $this->view->make('home.home', compact('title'));
+        return $this->view('home.home', compact('title'));
 	}
 
 	public function teste() {
-		echo 'teste';
+		$title = 'Test';
+        return $this->view('home.teste', compact('title'));
 	}
 }
