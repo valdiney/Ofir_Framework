@@ -1,4 +1,7 @@
 <?php
+
+namespace Ofir\Controllers;
+
 class HomeController extends Controller
 {
     protected $user;
