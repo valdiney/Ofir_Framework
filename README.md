@@ -7,6 +7,38 @@ Welcome to Ofir. This is a Project Development of the PHP-Framework. Developed b
 The Ofir is very easy to use. You just need install and run in your server. <br>
 Ofir uses the Model-View-Controller approach, which allows great separation between logic and presentation. 
 
+# Instalation
+
+To get help in initializing you can go to our wiki.
+
+For example, you can work with `nginx` or `apache`, you just need follow these steps:
+
+### Install composer
+
+We are using `composer` to load some packages and our classes (especially).
+
+Go to [composer website](https://getcomposer.org) and choose one option. If you are using [Linux / Unix / OSX](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx), or [Windows](https://getcomposer.org/doc/00-intro.md#installation-windows).
+
+### Get that project
+
+* You can download this project in a [zip file](https://github.com/valdiney/Ofir_Framework-0.1/archive/master.zip).
+* You can clone this repo.
+* Or you can `fork this project`.
+  * Enjoy to help us :wink:
+
+### Install the necessaries things to init
+
+> $ cd [directory] <br>
+> $ composer install <br>
+
+### Configure your development
+
+If you are on a `Apache Environment`, just create a point from the `public/` folder.
+
+If you are on a `Nginx Environment`, you need to go on our wiki and follow some steps: [Configurando no Nginx](https://github.com/valdiney/Ofir_Framework-0.1/wiki/Configurando-no-Nginx).
+
+**You are ready!**
+
 # What I need at this moment?
 
 I need to create a powerful class to work with SQL query. My objective is abstracting the SQL language in the Application.
