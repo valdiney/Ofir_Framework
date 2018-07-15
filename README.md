@@ -16,18 +16,15 @@ I need to create a powerful class to work with SQL query. My objective is abstra
 ### Example of the Model class:
 
 ```php
-
 class User extends Model
 {
     protected $table = 'user';
 }
-
 ```
 
 ### Example of the Controller class:
 
 ```php
-
 class UserController extends Controller 
 {
     protected $users;
@@ -45,24 +42,20 @@ class UserController extends Controller
         return $this->view('home.index', compact('title', 'users'));
     }
 }
-
 ```
 
 ### Example of the View:
 
-```html
-
+```php
 <?php foreach ($users as $user): ?>
     <b>Name:</b> <?php $user->name;?> <br>
     <b>Email:</b> <?php $user->email;?> <br>
 <?php endforeach; ?>
-
 ```
 
-#### then...
+### then...
 
 Accessing the url `http://[site.example]/users/`, you will see the all users from you database.
-
 
 # Changelog:
 
