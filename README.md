@@ -97,5 +97,6 @@ Accessing the url `http://[site.example]/users/`, you will see the all users fro
 
 # Changelog:
 
-- [v2.1.0](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.0.0) - A new version has been created.
+- [v2.1.1](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.1.1)
+- [v2.1.0](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.0.0)
 - [v1.0.0](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v1.0.0) 
