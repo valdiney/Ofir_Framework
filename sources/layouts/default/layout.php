@@ -5,7 +5,7 @@
     <?php Helper::css('css.bootstrap');?>
     <?php Helper::css('css.style');?>
     <title><?php echo $title;?></title>
-	<base href="<?php echo BASE; ?>">
+    <base href="<?php echo BASE; ?>">
 </head>
 <body>
 

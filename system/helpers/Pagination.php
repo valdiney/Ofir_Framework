@@ -19,8 +19,7 @@ class Pagination
     protected static $afterLink = null;
 
     # Calculate the total of the rows
-    private static function totalRows()
-    {
+    private static function totalRows() {
         self::$totalRows = count(self::$query);
         return self::$totalRows;
     }
@@ -33,8 +32,7 @@ class Pagination
     * @return Array of the object
     */
 
-    public static function paginator($perPage, $dbQuery)
-    {
+    public static function paginator($perPage, $dbQuery) {
         if (isset($_GET['p'])) {
             # Get the value from HTTP-GET
             $getPage = (int) $_GET['p'];
@@ -55,8 +53,7 @@ class Pagination
     }
 
     # Create of the nex link of pagination
-    public static function next_link()
-    {
+    public static function next_link() {
         if (isset($_GET['p'])) {
             # Get the value from HTTP-GET
             $getPage = (int) $_GET['p'];
@@ -91,8 +88,7 @@ class Pagination
     }
 
     # Create of the after link of pagination
-    public static function afterLink()
-    {
+    public static function afterLink() {
         if (isset($_GET['p'])) {
             # Get the value from HTTP-GET
             $getPage = (int) $_GET['p'];
@@ -120,8 +116,7 @@ class Pagination
         echo "href='{$url}'>";
     }
 
-    public static function paginateInformation()
-    {
+    public static function paginateInformation() {
         $page = $_GET['p'];
         if ($page >= self::$numPage) {
             $page = self::$numPage;

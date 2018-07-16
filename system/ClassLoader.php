@@ -5,14 +5,12 @@ class ClassLoader
     public $dirName;
     public $className = array();
 
-    public function setDirClass($dir)
-    {
+    public function setDirClass($dir) {
         $this->dirName = trim($dir);
         $this->directory = dir($dir);
     }
 
-    public function readClassName()
-    {
+    public function readClassName() {
         while ($archives = $this->directory->read()) {
             if ($archives != '.' AND $archives != '..') {
                 $archives = explode('.php', $archives);
@@ -21,15 +19,13 @@ class ClassLoader
         }
     }
 
-    public function loader()
-    {
+    public function loader() {
         foreach ($this->className as $class) {
             require_once("{$this->dirName}{$class}.php");
         }
     }
 
-    public function prepareClassToInstantiate()
-    {
+    public function prepareClassToInstantiate() {
         $this->readClassName();
         $this->loader();
 

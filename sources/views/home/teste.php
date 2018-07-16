@@ -1,12 +1,12 @@
 
 <div class="container">
-	<div class="content">
+    <div class="content">
 
-		<p class="text-center">
-			<a href="">home</a>
-		</p>
+        <p class="text-center">
+            <a href="">home</a>
+        </p>
 
-		<h2>This is a simple test.</h2>
+        <h2>This is a simple test.</h2>
 
-	</div>
+    </div>
 </div>

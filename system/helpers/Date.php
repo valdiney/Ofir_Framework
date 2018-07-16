@@ -5,8 +5,7 @@
 
 class Date
 {
-    public static function dateFormat($date = null)
-    {
+    public static function dateFormat($date = null) {
         # Converting date to USA standard
         if (strpos($date, "/")) {
             $date = explode("/", $date);
@@ -20,8 +19,7 @@ class Date
         }
     }
 
-    public static function dateNow($format = null)
-    {
+    public static function dateNow($format = null) {
         $format = trim(strtolower($format));
         $format = strtoupper($format);
 
@@ -36,8 +34,7 @@ class Date
 
     # This method is used to return a date time, the parameters represent 'continent' and 'city'
     # to be put in time zone
-    public static function dateTime($format = false, $your_date = false, $continent = 'America', $city = 'Araguaina')
-    {
+    public static function dateTime($format = false, $your_date = false, $continent = 'America', $city = 'Araguaina') {
         date_default_timezone_set("{$continent}/{$city}");
         $date = date("Y-m-d H:i:s");
 
@@ -54,8 +51,7 @@ class Date
 
     # This method is used to return the time, the parameters represent 'continent' and 'city'
     # to be put in time zone
-    public static function hour($continent = 'America', $city = 'Araguaina')
-    {
+    public static function hour($continent = 'America', $city = 'Araguaina') {
         date_default_timezone_set("{$continent}/{$city}");
         return date("H:i:s");
     }
