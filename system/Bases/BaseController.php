@@ -68,46 +68,23 @@ class BaseController
     * Render the view used in the controller
     *
     * @param view : string : Name of view and the name of the folder of the view
-    * @param data : mixed : Values that will be passed to the view
+    * @param data : array : Values that will be passed to the view
     */
-    public function view($view, $data = false) {
-        if ($data) {
-            # Set in array the values passed to view
-            foreach ($data as $key => $items) {
-                $this->data[$key] = $items;
-            }
+    public function view(String $view, Array $data=[]) {
+        # Set in array the values passed to view
+        foreach ($data as $key => $items) {
+            $this->data[$key] = $items;
         }
 
         # Transforming the operator '.' in operator '='
         $view = StringHelper::toSlash($view);
-        $view = __DIR__ .'/../../'. Route::$viewDir . "{$view}.php";
-
-        # Passing the values to be used into the views
-        foreach ($this->getData() as $key => $itens) {
-            $$key = $itens;
-        }
+        $this->content = __DIR__ . "/../../sources/views/{$view}.php";
 
         # Verify if exist the view file
-        if (!file_exists($view)) {
-            $view = __DIR__ .'/../../'. Route::$viewDir . "errors/404-page-not-found.php";;
+        if (!file_exists($this->content)) {
+            $this->content = __DIR__ . "/../../sources/views/errors/404-page-not-found.php";;
         }
-
-        # Passing the name and path of the views files
-        $this->content = $view;
-
-        # Verify if the method are using a layout
-        if ($this->masterLayout !== null) {
-            $this->masterLayout = __DIR__ ."/../../sources/layouts/{$this->masterLayout}/layout.php";
-            # Verify if the layout exist in the layout folder
-            if (file_exists($this->masterLayout)) {
-                # Include the layout
-                $this->content = $view;
-                require_once($this->masterLayout);
-                exit;
-            }
-        }
-        $view = __DIR__ .'/../../'. Route::$viewDir . "errors/404-page-not-found.php";
-        require_once($view);
+        return $this->render();
     }
 
     public function withFiles($key_word, $name) {
@@ -118,5 +95,27 @@ class BaseController
             echo "<b>(In Controller) {$name}</b>: <font color='red'> This file not exist, you should verify the name and path of the file";
             exit;
         }
+    }
+
+    /**
+     * Render the actual view
+     *
+     * @return void
+     */
+    protected function render() {
+        # extracting all data variables
+        extract($this->data);
+        # Verify if the method are using a layout
+        if ($this->masterLayout==null) {
+            require_once($this->content);
+            exit();
+        }
+        $this->masterLayout = __DIR__ ."/../../sources/layouts/{$this->masterLayout}/layout.php";
+        # Verify if the layout exist in the layout folder
+        if (file_exists($this->masterLayout)) {
+            require_once($this->masterLayout);
+            exit();
+        }
+        throw new Exception("The layout `$this->masterLayout` doesn't exists.");
     }
 }
