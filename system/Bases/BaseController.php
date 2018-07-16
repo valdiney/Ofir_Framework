@@ -103,14 +103,12 @@ class BaseController
         extract($this->data);
         # Verify if the method are using a layout
         if ($this->masterLayout==null) {
-            require_once($this->content);
-            exit();
+            return require_once($this->content);
         }
         $this->masterLayout = __DIR__ ."/../../sources/layouts/{$this->masterLayout}/layout.php";
         # Verify if the layout exist in the layout folder
         if (file_exists($this->masterLayout)) {
-            require_once($this->masterLayout);
-            exit();
+            return require_once($this->masterLayout);
         }
         throw new Exception("The layout `$this->masterLayout` doesn't exists.");
     }
