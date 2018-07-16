@@ -14,6 +14,5 @@ class Core
         $method     = Route::$method;
         $controller = new $controller;
         $controller->{$method}();
-        $controller->finalyze();
     }
 }

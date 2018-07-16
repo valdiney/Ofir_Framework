@@ -41,10 +41,6 @@ class BaseController
         exit();
     }
 
-    public function finalyze() {
-        //
-    }
-
     public function importFiles($name) {
         if (array_key_exists($name, $this->includeFiles)) {
             return include($this->includeFiles[$name]);
