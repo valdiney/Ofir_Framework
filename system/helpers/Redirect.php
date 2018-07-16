@@ -10,15 +10,13 @@
 
 class Redirect
 {
-    public function to($path = false, $variables = false)
-    {
+    public function to($path = false, $variables = false) {
         $path = str_replace(".", "=", $path);
         $complete_path = GeneratingPerfectURL::generatingPerfectURL($path, $variables);
         header("Location:?{$complete_path}&p=1");
     }
 
-    public static function back($variables = false)
-    {
+    public static function back($variables = false) {
         $server = $_SERVER['HTTP_REFERER'];
         $extract_question_mark = explode('?', $server);
         $extract_again = explode('&p=', $extract_question_mark[1]);

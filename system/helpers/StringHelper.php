@@ -12,8 +12,7 @@ class StringHelper
     * @return string
     */
 
-    public static function toSlash($value = false)
-    {
+    public static function toSlash($value = false) {
         return str_replace('.', '/', $value);
     }
 }

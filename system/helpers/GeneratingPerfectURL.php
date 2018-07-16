@@ -10,8 +10,7 @@ class GeneratingPerfectURL
     * @param  variables : string : variables and the values of the variables passed via 'HTTP-GET'
     */
 
-    public static function generatingPerfectURL($path = false, $variables = false)
-    {
+    public static function generatingPerfectURL($path = false, $variables = false) {
         # Transforming the operator '.' in operator '='
         $path = str_replace('.', '=', $path);
 

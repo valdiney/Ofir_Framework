@@ -12,8 +12,7 @@ class MoneyFormat
     * @param number : number : The number that will be formatted
     * @return : number : Formatted Brazilian number
     */
-    public static function brFormat($number)
-    {
+    public static function brFormat($number) {
         return number_format($number, 2, ',', '.');
     }
 }

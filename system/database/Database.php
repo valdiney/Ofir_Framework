@@ -10,12 +10,9 @@ class Database
 {
     private static $pdo;
 
-    public static function connect()
-    {
-        if (!isset($pdo))
-        {
-            try
-            {
+    public static function connect() {
+        if (!isset($pdo)) {
+            try {
 				$host     = getenv('HOST_NAME');
 				$username = getenv('HOST_USERNAME');
 				$password = getenv('HOST_PASSWORD');
@@ -23,8 +20,7 @@ class Database
 				self::$pdo = new PDO("mysql:" . "host={$host};dbname={$dbname}", $username, $password,
 					array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
             }
-            catch (PDOException $e)
-            {
+            catch (PDOException $e) {
                 if ($e->getCode() == 2002) {
                     echo "<b>Database configuration Error:</b> This Localhost not exist in this server";
                     exit;

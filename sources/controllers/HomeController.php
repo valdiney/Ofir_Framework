@@ -4,7 +4,7 @@ class HomeController extends BaseController
 {
     protected $user;
     protected $view;
-	protected $layout = 'secondary';
+    protected $layout = 'secondary';
 
     public function __construct()
     {
@@ -15,10 +15,10 @@ class HomeController extends BaseController
     {
         $title = 'This is Ofir Framework';
         return $this->view('home.home', compact('title'));
-	}
+    }
 
-	public function test() {
-		$title = 'Test';
+    public function test() {
+        $title = 'Test';
         return $this->layout('secondary')->view('home.teste', compact('title'));
-	}
+    }
 }

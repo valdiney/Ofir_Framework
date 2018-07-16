@@ -3,8 +3,7 @@
 
 class GetURL
 {
-    public static function getURL($option)
-    {
+    public static function getURL($option) {
         $url = $_SERVER['REQUEST_URI'];
         $separator = explode('?', $url);
         $other_separator = explode('=', $separator[1]);

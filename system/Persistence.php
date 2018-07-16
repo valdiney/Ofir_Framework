@@ -6,11 +6,10 @@
 class Persistence
 {
     protected $db;
-    public $persistence = null;
     protected $field = array();
+    public    $persistence = null;
 
-    public function __construct(PDO $pdo)
-    {
+    public function __construct(PDO $pdo) {
         $this->db = $pdo;
     }
 
@@ -26,16 +25,14 @@ class Persistence
     * @return boolean or an array
     */
 
-    public function find($id = 0)
-    {
+    public function find($id = 0) {
         $id = (int) $id;
         $query = $this->db->prepare("SELECT * FROM {$this->table} WHERE id = ?");
         $query->execute(array($id));
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function get_array()
-    {
+    public function getArray() {
         $query = $this->db->prepare("SELECT * FROM {$this->table}");
         $query->execute();
         return $query->fetch(PDO::FETCH_ASSOC);
@@ -49,15 +46,13 @@ class Persistence
     * @return boolean or an array
     */
 
-    public function findBy($field = null, $value = null)
-    {
+    public function findBy($field = null, $value = null) {
         $query = $this->db->prepare("SELECT * FROM {$this->table} WHERE {$field} = ?");
         $query->execute(array($value));
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function select()
-    {
+    public function select() {
         $this->Persistence = "SELECT * FROM {$this->table}";
         return $this;
     }
@@ -70,8 +65,7 @@ class Persistence
     * @return Array of Objects or Array of Arrays
     */
 
-    public function query($query, $type_return = null)
-    {
+    public function query($query, $type_return = null) {
         $type_return = trim(strtolower($type_return));
 
         $sql = $this->db->query($query);
@@ -94,8 +88,7 @@ class Persistence
     * @return an array of objects
     */
 
-    public function getAll()
-    {
+    public function getAll() {
         $sql = $this->db->prepare($this->Persistence);
         $sql->execute();
         return $sql->fetchAll(PDO::FETCH_OBJ);
@@ -107,8 +100,7 @@ class Persistence
     * @return an array of objects
     */
 
-    public function getFirst()
-    {
+    public function getFirst() {
         $this->Persistence .= " ORDER BY id ASC LIMIT 1";
         $sql = $this->db->prepare($this->Persistence);
         $sql->execute();
@@ -121,8 +113,7 @@ class Persistence
     * @return an array of objects
     */
 
-    public function getLast()
-    {
+    public function getLast() {
         $this->Persistence .= " ORDER BY id DESC LIMIT 1";
         $sql = $this->db->prepare($this->Persistence);
         $sql->execute();
@@ -135,13 +126,11 @@ class Persistence
     * @return interger id
     */
 
-    public function getLastID()
-    {
+    public function getLastID() {
         return $this->db->lastInsertId();
     }
 
-    public function limit($limit_numbar = 1)
-    {
+    public function limit($limit_numbar = 1) {
         $this->Persistence .= " LIMIT {$limit_numbar}";
         return $this;
     }
@@ -153,8 +142,7 @@ class Persistence
     * @return boolean true or false
     */
 
-    public function save(Array $data)
-    {
+    public function save(Array $data) {
         foreach ($data as $key => $list) {
             $fields[] = $key;
             $values[] = $list;
@@ -178,8 +166,7 @@ class Persistence
     * @return boolean true or false
     */
 
-    public function update(Array $data, $id)
-    {
+    public function update(Array $data, $id) {
         $id = (int) $id;
 
         # Prepare the fields
@@ -219,8 +206,7 @@ class Persistence
     * @return boolean true or false
     */
 
-    public function delete($id)
-    {
+    public function delete($id) {
         $id = (int) $id;
         $delete = $this->db->prepare("DELETE FROM {$this->table} WHERE id = ?");
         return $delete->execute(array($id));
@@ -236,8 +222,7 @@ class Persistence
     * @return Object
     */
 
-    public function join($master_table, $master_table_field, $slave_table, $fk_slave, $fields = false)
-    {
+    public function join($master_table, $master_table_field, $slave_table, $fk_slave, $fields = false) {
         $this->Persistence = "SELECT {$master_table}.{$master_table_field}, {$fields} FROM {$master_table} INNER JOIN {$slave_table} ON {$slave_table}.{$fk_slave} = {$master_table}.{$master_table_field}";
         return $this;
     }
@@ -252,20 +237,17 @@ class Persistence
     * @return Object
     */
 
-    public function joinToo($master_table, $master_table_field, $slave_table, $fk_slave)
-    {
+    public function joinToo($master_table, $master_table_field, $slave_table, $fk_slave) {
         $this->Persistence .= " AND {$master_table}.{$master_table_field} INNER JOIN {$slave_table} ON {$slave_table}.{$fk_slave} = {$master_table}.{$master_table_field}";
         return $this;
     }
 
-    public function leftJoin($master_table, $master_table_field, $slave_table, $fk_slave, $fields = false)
-    {
+    public function leftJoin($master_table, $master_table_field, $slave_table, $fk_slave, $fields = false) {
         $this->Persistence = "SELECT {$master_table}.{$master_table_field}, {$fields} FROM {$master_table} LEFT JOIN {$slave_table} ON {$slave_table}.{$fk_slave} = {$master_table}.{$master_table_field}";
         return $this;
     }
 
-    public function leftJoinToo($master_table, $master_table_field, $slave_table, $fk_slave)
-    {
+    public function leftJoinToo($master_table, $master_table_field, $slave_table, $fk_slave) {
         $this->Persistence .= " AND {$master_table}.{$master_table_field} LEFT JOIN {$slave_table} ON {$slave_table}.{$fk_slave} = {$master_table}.{$master_table_field}";
         return $this;
     }

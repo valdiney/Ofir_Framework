@@ -15,8 +15,8 @@ class PasswordGenerator
     protected static $symbols = "-!*@#%$";
     protected static $character = null;
     protected static $result = null;
-    public static function generate($length = 8, $number = true, $symbols = true, $upperCase = true)
-    {
+
+    public static function generate($length = 8, $number = true, $symbols = true, $upperCase = true) {
         self::$character .= self::$letters;
         if ($number) {
             self::$character .= self::$number;

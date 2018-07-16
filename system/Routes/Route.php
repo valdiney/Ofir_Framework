@@ -5,8 +5,8 @@ class Route
     public static $controller = null;
     public static $method     = null;
 
-	public static $view    = null;
-	public static $viewDir = 'sources/views/';
+    public static $view    = null;
+    public static $viewDir = 'sources/views/';
 
     protected static $messages = [
         1 => "The name of the Controller or the name of the Method can be wrong or not exist.",
@@ -62,12 +62,12 @@ class Route
         return class_exists($verify)? $verify: '';
     }
 
-	/**
-	 * Find actual method from the actual url
-	 *
-	 * @param Array $BRANCH
-	 * @return void
-	 */
+    /**
+     * Find actual method from the actual url
+     *
+     * @param Array $BRANCH
+     * @return void
+     */
     protected static function configureActualMethod(Array $BRANCH) {
         if (self::$method !== null) {
             return;
@@ -112,7 +112,7 @@ class Route
             return $withoutRequestMethod;
         }
         return null;
-	}
+    }
 
     /**
      * Turn an dashed string to camelCase
@@ -128,17 +128,17 @@ class Route
             $response[0] = strtolower($response[0]);
         }
         return $response;
-	}
+    }
 
-	/**
-	 * Turn camelCase string to an dashed
-	 *
-	 * @param String $value
-	 * @return String
-	 */
+    /**
+     * Turn camelCase string to an dashed
+     *
+     * @param String $value
+     * @return String
+     */
     protected static function camelCaseToDashes(String $value): String
     {
-		return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $value));
+        return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $value));
     }
 
 }

@@ -15,7 +15,7 @@ $documentURI = dirname($documentURI, 1);
 # if the DOCUMENT_URI is not '/', in others words,
 # if the DOCUMENT_URI is not empty
 if ($documentURI!=='/') {
-	$URI = str_replace($documentURI, '', $URI);
+    $URI = str_replace($documentURI, '', $URI);
 }
 # removes the first bar
 $URI = trim($URI, '/');
@@ -36,7 +36,7 @@ $REQUEST_METHOD = strtolower($_SERVER['REQUEST_METHOD']);
 $BASE = "{$SCHEME}://{$_SERVER['SERVER_NAME']}{$documentURI}";
 # adds a final bar if not contains
 if ($BASE[strlen($BASE)-1] !== '/') {
-	$BASE .= "/";
+    $BASE .= "/";
 }
 
 # this is the url base of this project

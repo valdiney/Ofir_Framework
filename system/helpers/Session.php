@@ -13,18 +13,15 @@ class Session
     * --------------------------------------------------------------------------
     */
 
-    public static function start()
-    {
+    public static function start() {
         session_start();
     }
 
-    public static function putSession($name = null, $value = null)
-    {
+    public static function putSession($name = null, $value = null) {
         $_SESSION[$name] = $value;
     }
 
-    public static function hasSession($name = null)
-    {
+    public static function hasSession($name = null) {
         if (isset($_SESSION[$name])) {
             return true;
         }
@@ -32,8 +29,7 @@ class Session
         return false;
     }
 
-    public static function getSession($name = null)
-    {
+    public static function getSession($name = null) {
         if (isset($_SESSION[$name])) {
              return $_SESSION[$name];
         }
@@ -41,8 +37,7 @@ class Session
         return false;
     }
 
-    public static function destroy($name = null)
-    {
+    public static function destroy($name = null) {
         unset($_SESSION[$name]);
     }
 
@@ -54,14 +49,12 @@ class Session
     * --------------------------------------------------------------------------
     */
 
-    public static function flash($name = null, $value = null)
-    {
+    public static function flash($name = null, $value = null) {
         $key = 'flash_' . $name;
         $_SESSION[$key] = $value;
     }
 
-    public static function has_flash($name = null)
-    {
+    public static function has_flash($name = null) {
         $name = 'flash_' . $name;
         if (isset($_SESSION[$name])) {
             return true;
@@ -70,8 +63,7 @@ class Session
         return false;
     }
 
-    public static function get_flash($name = null)
-    {
+    public static function get_flash($name = null) {
         $name = 'flash_' . $name;
         if (isset($_SESSION[$name])) {
             echo $_SESSION[$name];

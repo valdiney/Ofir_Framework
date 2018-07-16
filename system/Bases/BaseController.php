@@ -44,35 +44,32 @@ class BaseController
         if (class_exists($model)) {
             # Instantiante the class Library and passing the Database Connection
             return new $model(Database::connect());
-		}
-		echo "The Model `{$model}` not exists!";
-		exit();
+        }
+        echo "The Model `{$model}` not exists!";
+        exit();
     }
 
-	public function finalyze() {
-		//
-	}
+    public function finalyze() {
+        //
+    }
 
-    public function importFiles($name)
-    {
+    public function importFiles($name) {
         if (array_key_exists($name, $this->includeFiles)) {
             return include($this->includeFiles[$name]);
-		}
-		echo "<b>(In View) {$name}</b>: <font color='red'> This file not exist, you should verify the name and path of the file.";
-		exit;
+        }
+        echo "<b>(In View) {$name}</b>: <font color='red'> This file not exist, you should verify the name and path of the file.";
+        exit;
     }
 
     # Return the array of the values that will be used in the views
-    protected function getData()
-    {
+    protected function getData() {
         return $this->data;
     }
 
     # Receive the name and the path of the layout
-    public function layout($layout = false)
-    {
-		$this->masterLayout = $layout;
-		return $this;
+    public function layout($layout = false) {
+        $this->masterLayout = $layout;
+        return $this;
     }
 
     /**
@@ -81,49 +78,47 @@ class BaseController
     * @param view : string : Name of view and the name of the folder of the view
     * @param data : mixed : Values that will be passed to the view
     */
-    public function view($view, $data = false)
-    {
+    public function view($view, $data = false) {
         if ($data) {
             # Set in array the values passed to view
             foreach ($data as $key => $items) {
                 $this->data[$key] = $items;
             }
-		}
+        }
 
         # Transforming the operator '.' in operator '='
-		$view = StringHelper::toSlash($view);
-		$view = __DIR__ .'/../../'. Route::$viewDir . "{$view}.php";
+        $view = StringHelper::toSlash($view);
+        $view = __DIR__ .'/../../'. Route::$viewDir . "{$view}.php";
 
         # Passing the values to be used into the views
         foreach ($this->getData() as $key => $itens) {
             $$key = $itens;
         }
 
-		# Verify if exist the view file
+        # Verify if exist the view file
         if (!file_exists($view)) {
-			$view = __DIR__ .'/../../'. Route::$viewDir . "errors/404-page-not-found.php";;
-		}
+            $view = __DIR__ .'/../../'. Route::$viewDir . "errors/404-page-not-found.php";;
+        }
 
-		# Passing the name and path of the views files
-		$this->content = $view;
+        # Passing the name and path of the views files
+        $this->content = $view;
 
-		# Verify if the method are using a layout
-		if ($this->masterLayout !== null) {
-			$this->masterLayout = __DIR__ ."/../../sources/layouts/{$this->masterLayout}/layout.php";
-			# Verify if the layout exist in the layout folder
-			if (file_exists($this->masterLayout)) {
-				# Include the layout
-				$this->content = $view;
-				require_once($this->masterLayout);
-				exit;
-			}
-		}
-		$view = __DIR__ .'/../../'. Route::$viewDir . "errors/404-page-not-found.php";
-		require_once($view);
+        # Verify if the method are using a layout
+        if ($this->masterLayout !== null) {
+            $this->masterLayout = __DIR__ ."/../../sources/layouts/{$this->masterLayout}/layout.php";
+            # Verify if the layout exist in the layout folder
+            if (file_exists($this->masterLayout)) {
+                # Include the layout
+                $this->content = $view;
+                require_once($this->masterLayout);
+                exit;
+            }
+        }
+        $view = __DIR__ .'/../../'. Route::$viewDir . "errors/404-page-not-found.php";
+        require_once($view);
     }
 
-    public function withFiles($key_word, $name)
-    {
+    public function withFiles($key_word, $name) {
         $name = str_replace('.', '/', $name);
         if (file_exists("{$name}.php")) {
             $this->includeFiles[$key_word] = "{$name}.php";

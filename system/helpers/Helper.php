@@ -12,8 +12,7 @@ class Helper
     * @param  variables : string : variables and the values of the variables passed via 'HTTP-GET'
     */
 
-    public static function linkTo($path = false, $variables = false)
-    {
+    public static function linkTo($path = false, $variables = false) {
         echo "href='?" . GeneratingPerfectURL::generatingPerfectURL($path, $variables) . "&p=1" . "'>";
     }
 
@@ -24,8 +23,7 @@ class Helper
     * @param  variables : string : variables and the values of the variables passed via 'HTTP-GET'
     */
 
-    public static function action($path = false, $variables = false)
-    {
+    public static function action($path = false, $variables = false) {
         echo 'action="?' . GeneratingPerfectURL::generatingPerfectURL($path, $variables) . '">';
     }
 
@@ -37,8 +35,7 @@ class Helper
     * @return void
     */
 
-    public static function css($path = false)
-    {
+    public static function css($path = false) {
         # Transforming the operator '.' in operator '='
         $path = StringHelper::toSlash($path);
         echo "<link rel='stylesheet' href='{$path}.css'></style>";
@@ -51,15 +48,13 @@ class Helper
     * @return void
     */
 
-    public static function script($path = false)
-    {
+    public static function script($path = false) {
         # Transforming the operator '.' in operator '='
         $path = StringHelper::toSlash($path);
         echo "<script src='{$path}.js'></script>";
     }
 
-    public static function importOnce($path)
-    {
+    public static function importOnce($path) {
         $path = StringHelper::toSlash($path);
         require_once dirname(__DIR__) . "/../{$path}.php";
     }
