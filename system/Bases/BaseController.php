@@ -15,15 +15,9 @@ class BaseController
     protected $includeFiles = array();
 
     # This methoad load the Library that will be used in the Controller
-    protected function library($path, $libraryName, $usingDB = false) {
+    protected function library(String $library, Bool $usingDB=false) {
         # Verify if Library Exist
-        if (file_exists("library/{$path}/{$libraryName}.php")) {
-
-            $library = "{$libraryName}";
-
-            # Include the Library
-            require_once("library/{$path}/{$libraryName}.php");
-
+        if (class_exists($library)) {
             if ($usingDB) {
                 # Instantiante the class Library and passing the Database Connection
                 return $library = new $library(Database::connect());
@@ -31,11 +25,9 @@ class BaseController
 
             # Instantiante the class Library without passing the Database Connection
             return $library = new $library();
-
-        } else {
-            echo "This Library not exist in ( <b>{$path}</b> ) folder.";
-            exit();
         }
+        echo "This Library not exist in ( <b>{$path}</b> ) folder.";
+        exit();
     }
 
     # This methoad load the Model that will be used in the Controller
