@@ -26,8 +26,7 @@ class BaseController
             # Instantiante the class Library without passing the Database Connection
             return $library = new $library();
         }
-        echo "This Library not exist in ( <b>{$path}</b> ) folder.";
-        exit();
+        throw new Exception("This Library not exist in (<b>{$path}</b>) folder.");
     }
 
     # This methoad load the Model that will be used in the Controller
@@ -37,16 +36,14 @@ class BaseController
             # Instantiante the class Library and passing the Database Connection
             return new $model(Database::connect());
         }
-        echo "The Model `{$model}` not exists!";
-        exit();
+        throw new Exception("The Model `{$model}` not exists!");
     }
 
     public function importFiles($name) {
         if (array_key_exists($name, $this->includeFiles)) {
             return include($this->includeFiles[$name]);
         }
-        echo "<b>(In View) {$name}</b>: <font color='red'> This file not exist, you should verify the name and path of the file.";
-        exit;
+        throw new Exception("<b>(In View) {$name}</b>: <font color='red'> This file not exist, you should verify the name and path of the file.");
     }
 
     # Return the array of the values that will be used in the views
@@ -86,11 +83,9 @@ class BaseController
     public function withFiles($key_word, $name) {
         $name = str_replace('.', '/', $name);
         if (file_exists("{$name}.php")) {
-            $this->includeFiles[$key_word] = "{$name}.php";
-        } else {
-            echo "<b>(In Controller) {$name}</b>: <font color='red'> This file not exist, you should verify the name and path of the file";
-            exit;
+            return $this->includeFiles[$key_word] = "{$name}.php";
         }
+        throw new Exception("<b>(In Controller) {$name}</b>: <font color='red'> This file not exist, you should verify the name and path of the file");
     }
 
     /**

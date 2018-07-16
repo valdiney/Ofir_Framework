@@ -12,7 +12,13 @@ class Core
     public static function init() {
         $controller = Route::$controller;
         $method     = Route::$method;
-        $controller = new $controller;
-        $controller->{$method}();
+        try {
+            $controller = new $controller;
+            $controller->{$method}();
+        } catch(Exception $e) {
+            ob_start();
+            echo $e->getMessage();
+            exit;
+        }
     }
 }
