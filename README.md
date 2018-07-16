@@ -4,7 +4,7 @@
 
 Welcome to Ofir. This is a Project Development of the PHP-Framework. Developed by student to students. What do you think about contribute with this project?
 
-The Ofir is very easy to use. You just need install and run in your server. <br>
+The Ofir is very easy to use. You just need install and run in your server.\
 Ofir uses the Model-View-Controller approach, which allows great separation between logic and presentation. 
 
 # Instalation
@@ -28,14 +28,20 @@ Go to [composer website](https://getcomposer.org) and choose one option. If you 
 
 ### Install the necessaries things to init
 
-> $ cd [directory] <br>
-> $ composer install <br>
+> $ cd [directory]\
+> $ composer install
 
 ### Configure your development
 
 If you are on a `Apache Environment`, just create a point from the `public/` folder.
 
 If you are on a `Nginx Environment`, you need to go on our wiki and follow some steps: [Configurando no Nginx](https://github.com/valdiney/Ofir_Framework-0.1/wiki/Configurando-no-Nginx).
+
+### Setuping the enviroment file
+
+Copy the file `/.env.sample` to `/.env` and configure. \
+The `APP_ENV` is about your Development Enviroment. \
+If you are in a local enviroment, then set it and the `Ofir`, if not you can set how: `production`, `test`...
 
 **You are ready!**
 
@@ -80,8 +86,8 @@ class UserController extends Controller
 
 ```php
 <?php foreach ($users as $user): ?>
-    <b>Name:</b> <?php $user->name;?> <br>
-    <b>Email:</b> <?php $user->email;?> <br>
+    <b>Name:</b> <?php $user->name;?>
+    <b>Email:</b> <?php $user->email;?>
 <?php endforeach; ?>
 ```
 

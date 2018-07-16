@@ -15,15 +15,9 @@ class BaseController
     protected $includeFiles = array();
 
     # This methoad load the Library that will be used in the Controller
-    protected function library($path, $libraryName, $usingDB = false) {
+    protected function library(String $library, Bool $usingDB=false) {
         # Verify if Library Exist
-        if (file_exists("library/{$path}/{$libraryName}.php")) {
-
-            $library = "{$libraryName}";
-
-            # Include the Library
-            require_once("library/{$path}/{$libraryName}.php");
-
+        if (class_exists($library)) {
             if ($usingDB) {
                 # Instantiante the class Library and passing the Database Connection
                 return $library = new $library(Database::connect());
@@ -31,11 +25,8 @@ class BaseController
 
             # Instantiante the class Library without passing the Database Connection
             return $library = new $library();
-
-        } else {
-            echo "This Library not exist in ( <b>{$path}</b> ) folder.";
-            exit();
         }
+        throw new Exception("This Library not exist in (<b>{$path}</b>) folder.");
     }
 
     # This methoad load the Model that will be used in the Controller
@@ -45,20 +36,14 @@ class BaseController
             # Instantiante the class Library and passing the Database Connection
             return new $model(Database::connect());
         }
-        echo "The Model `{$model}` not exists!";
-        exit();
-    }
-
-    public function finalyze() {
-        //
+        throw new Exception("The Model `{$model}` not exists!");
     }
 
     public function importFiles($name) {
         if (array_key_exists($name, $this->includeFiles)) {
             return include($this->includeFiles[$name]);
         }
-        echo "<b>(In View) {$name}</b>: <font color='red'> This file not exist, you should verify the name and path of the file.";
-        exit;
+        throw new Exception("<b>(In View) {$name}</b>: <font color='red'> This file not exist, you should verify the name and path of the file.");
     }
 
     # Return the array of the values that will be used in the views
@@ -76,55 +61,50 @@ class BaseController
     * Render the view used in the controller
     *
     * @param view : string : Name of view and the name of the folder of the view
-    * @param data : mixed : Values that will be passed to the view
+    * @param data : array : Values that will be passed to the view
     */
-    public function view($view, $data = false) {
-        if ($data) {
-            # Set in array the values passed to view
-            foreach ($data as $key => $items) {
-                $this->data[$key] = $items;
-            }
+    public function view(String $view, Array $data=[]) {
+        # Set in array the values passed to view
+        foreach ($data as $key => $items) {
+            $this->data[$key] = $items;
         }
 
         # Transforming the operator '.' in operator '='
         $view = StringHelper::toSlash($view);
-        $view = __DIR__ .'/../../'. Route::$viewDir . "{$view}.php";
-
-        # Passing the values to be used into the views
-        foreach ($this->getData() as $key => $itens) {
-            $$key = $itens;
-        }
+        $this->content = __DIR__ . "/../../sources/views/{$view}.php";
 
         # Verify if exist the view file
-        if (!file_exists($view)) {
-            $view = __DIR__ .'/../../'. Route::$viewDir . "errors/404-page-not-found.php";;
+        if (!file_exists($this->content)) {
+            $this->content = __DIR__ . "/../../sources/views/errors/404-page-not-found.php";;
         }
-
-        # Passing the name and path of the views files
-        $this->content = $view;
-
-        # Verify if the method are using a layout
-        if ($this->masterLayout !== null) {
-            $this->masterLayout = __DIR__ ."/../../sources/layouts/{$this->masterLayout}/layout.php";
-            # Verify if the layout exist in the layout folder
-            if (file_exists($this->masterLayout)) {
-                # Include the layout
-                $this->content = $view;
-                require_once($this->masterLayout);
-                exit;
-            }
-        }
-        $view = __DIR__ .'/../../'. Route::$viewDir . "errors/404-page-not-found.php";
-        require_once($view);
+        return $this->render();
     }
 
     public function withFiles($key_word, $name) {
         $name = str_replace('.', '/', $name);
         if (file_exists("{$name}.php")) {
-            $this->includeFiles[$key_word] = "{$name}.php";
-        } else {
-            echo "<b>(In Controller) {$name}</b>: <font color='red'> This file not exist, you should verify the name and path of the file";
-            exit;
+            return $this->includeFiles[$key_word] = "{$name}.php";
         }
+        throw new Exception("<b>(In Controller) {$name}</b>: <font color='red'> This file not exist, you should verify the name and path of the file");
+    }
+
+    /**
+     * Render the actual view
+     *
+     * @return void
+     */
+    protected function render() {
+        # extracting all data variables
+        extract($this->data);
+        # Verify if the method are using a layout
+        if ($this->masterLayout==null) {
+            return require_once($this->content);
+        }
+        $this->masterLayout = __DIR__ ."/../../sources/layouts/{$this->masterLayout}/layout.php";
+        # Verify if the layout exist in the layout folder
+        if (file_exists($this->masterLayout)) {
+            return require_once($this->masterLayout);
+        }
+        throw new Exception("The layout `$this->masterLayout` doesn't exists.");
     }
 }
