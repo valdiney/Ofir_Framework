@@ -4,6 +4,8 @@ require_once("config-display-erros.php");
 
 require_once("config-timezone.php");
 
+require_once("session-config.php");
+
 # includes the file responsible for load .env file
 require_once("enviroments.php");
 
