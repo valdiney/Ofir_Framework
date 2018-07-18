@@ -73,7 +73,7 @@ class Route
             return;
         }
         # removes the first child
-        $BRANCH = array_shift($BRANCH);
+        array_shift($BRANCH);
         # if branch is empty, then the index method is trying to be accessed
         if ($BRANCH==null) {
             # verify if method index exists
