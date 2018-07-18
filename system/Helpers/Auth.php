@@ -2,51 +2,37 @@
 
 class Auth
 {
-    private function loginVerify($data = array()) {
-        $data['password'] = Hash::make($data['password']);
+    protected static $sessionName = 'auth_login';
+
+    private function login(String $login, String $password): Int {
+        $password = Hash::make($password);
         $query = $this->db->prepare("SELECT * FROM {$this->table} WHERE login = ? AND password = ?");
-        $query->execute(array($data['login'], $data['password']));
+        $query->execute(array($login, $password));
         return $query->rowCount();
     }
 
-    public function userExist($data = array()) {
-        if ($this->loginVerify($data)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public function loginExists($login = false) {
+    public function exists(String $login): Bool {
         $query = $this->db->prepare("SELECT * FROM {$this->table} WHERE login = ?");
         $query->execute(array($login));
         return $query->rowCount();
     }
 
     public static function logout() {
-        session_destroy();
+        Session::destroy(self::$sessionName);
     }
 
-    public function isNotUniqueLogin($login = null, $userIdApplication = null) {
-        if ($this->loginExist($login)) {
-
-            $userIdFromDatabase = null;
-
-            foreach ($this->privateWhere('login', '=', $login) as $itens) {
-                $userIdFromDatabase = $itens->id;
-            }
-
-            if ($userIdFromDatabase != $userIdApplication) {
-                return true;
-            }
-
+    public function isNotUniqueLogin(String $login, Id $userIdApplication) {
+        if (!$this->loginExist($login)) {
             return false;
         }
-
-        return false;
+        $userIdFromDatabase = null;
+        foreach ($this->privateWhere('login', '=', $login) as $itens) {
+            $userIdFromDatabase = $itens->id;
+        }
+        return $userIdFromDatabase != $userIdApplication;
     }
 
-    private function privateWhere($field = null, $condition = null, $value = null) {
+    private function privateWhere(String $field, String $condition, $value) {
         $query = $this->db->prepare("SELECT * FROM {$this->table} WHERE {$field} {$condition} ?");
         $query->execute(array($value));
         return $this->fetch($query);
