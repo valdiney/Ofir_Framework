@@ -3,7 +3,7 @@
 * This class is used to work with persistence in database
 */
 
-class persistence
+class Persistence
 {
     protected $db;
     protected $field = array();
