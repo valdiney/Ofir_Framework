@@ -12,14 +12,12 @@ Ofir uses the Model-View-Controller approach, which allows great separation betw
 To get help in initializing you can go to our [documentation](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md).\
 For example, you can work with [nginx](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#nginx) or [apache](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#apache).
 
-### Installing composer
-
 We are using `composer` to load some packages and our classes (especially).\
-Get help to install composer in your machine in our [docs](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#composer).
+Get help to install composer in your machine: [installing composer](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#composer).
 
-Copy the file `/.env.sample` to `/.env` and configure it. More helps in out [docs](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#environment).
+Copy the file `/.env.sample` to `/.env` and configure it, we was read an step-by-step: [configurating the enviroment](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#environment).
 
-Then, configure the your development environment, help in our [docs](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#development-environment).
+Then [configure your development environment](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#development-environment).
 
 **You are ready!**
 
