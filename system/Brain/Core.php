@@ -12,8 +12,13 @@ class Core
     public static function init() {
         $controller = Route::$controller;
         $method     = Route::$method;
+        $data       = Route::$data;
         try {
             $controller = new $controller;
+            if (count($data)) {
+                call_user_func_array([$controller, $method], $data);
+                return;
+            }
             $controller->{$method}();
         } catch(Exception $e) {
             ob_start();

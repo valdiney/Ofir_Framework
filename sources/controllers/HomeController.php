@@ -17,8 +17,8 @@ class HomeController extends BaseController
         return $this->view('home.home', compact('title'));
     }
 
-    public function test() {
+    public function test(string $test='') {
         $title = 'Test';
-        return $this->layout('secondary')->view('home.teste', compact('title'));
+        return $this->layout('secondary')->view('home.teste', compact('title', 'test'));
     }
 }

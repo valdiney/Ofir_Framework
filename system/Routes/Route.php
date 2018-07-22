@@ -4,6 +4,7 @@ class Route
 {
     public static $controller = null;
     public static $method     = null;
+    public static $data       = [];
 
     public static $view    = null;
     public static $viewDir = 'sources/views/';
@@ -45,7 +46,9 @@ class Route
             self::$method = "controllerNotFound";
         }
         if (isset($method)) {
+            array_shift($BRANCH);
             self::$method = $method;
+            self::$data = $BRANCH;
             $controller   = 'HomeController';
         }
         self::$controller = $controller;
@@ -76,18 +79,23 @@ class Route
         array_shift($BRANCH);
         # if branch is empty, then the index method is trying to be accessed
         if ($BRANCH==null) {
+            array_shift($BRANCH);
             # verify if method index exists
             if ($method = self::verifyIsMethod(self::$controller, 'index')) {
+                self::$data = $BRANCH;
                 self::$method = $method;
                 return;
             }
             # verify if method home exists
             if (($method = self::verifyIsMethod(self::$controller, 'home'))) {
+                self::$data = $BRANCH;
                 self::$method = $method;
                 return;
             }
         }
         if (($method = self::verifyIsMethod(self::$controller, $BRANCH[0]))) {
+            array_shift($BRANCH);
+            self::$data = $BRANCH;
             self::$method = $method;
             return;
         }
