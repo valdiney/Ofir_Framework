@@ -2,10 +2,9 @@
 
 class Users extends BaseModel
 {
-    protected $table = null;
+    protected $table = 'users';
 
-    public function teste()
-    {
-        return "Funcionou pow";
+    public function test() {
+        return "It's work!";
     }
 }
