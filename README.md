@@ -1,33 +1,33 @@
 # Ofir Framework
 
-# Description
+## Description
 
 Welcome to Ofir. This is a Project Development of the PHP Framework. Developed by student to students. What do you think about contribute with this project?
 
 The Ofir is very easy to use. You just need install and run in your server.\
 Ofir uses the Model-View-Controller approach, which allows great separation between logic and presentation. 
 
-# Instalation
+## Instalation
 
-To get help in initializing you can go to our [documentation](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md).\
+To get help in initializing you can see [our documentation for install](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md).\
 For example, you can work with [nginx](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#nginx) or [apache](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#apache).
 
 We are using `composer` to load some packages and our classes (especially).\
-Get help to install composer in your machine: [installing composer](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#composer).
+Get help to install composer in your machine ([installing composer](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#composer)).
 
-Copy the file `/.env.sample` to `/.env` and configure it, we was read an step-by-step: [configurating the enviroment](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#environment).
+Copy the file `.env.sample` to `.env` and configure it, we writed a step-by-step then you can [see about the enviroment](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#environment). Then [configure your development environment](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#development-environment).
 
-Then [configure your development environment](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#development-environment).
+**I think that you are ready!**
 
-**You are ready!**
-
-# What I need at this moment?
+## What I need at this moment?
 
 I need to create a powerful class to work with SQL query. My objective is abstracting the SQL language in the Application.
 
 If you can help us, go to our issues (#41) and send a pull request.
 
-# Examples
+---
+
+## Some examples
 
 ### Example of the Model class:
 
@@ -73,7 +73,7 @@ class UserController extends Controller
 
 Accessing the url `http://[site.example]/users/`, you will see the all users from you database.
 
-# Changelog:
+## Changelog:
 
 - [v2.1.2](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.1.2)
 - [v2.1.1](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.1.1)
