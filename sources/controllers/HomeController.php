@@ -2,14 +2,7 @@
 
 class HomeController extends BaseController
 {
-    protected $user;
-    protected $view;
     protected $layout = 'secondary';
-
-    public function __construct()
-    {
-        $this->user = $this->model('Users');
-    }
 
     public function index()
     {
