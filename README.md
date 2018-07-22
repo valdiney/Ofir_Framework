@@ -44,7 +44,6 @@ class User extends Model
 class UserController extends Controller 
 {
     protected $users;
-    protected $view;
 
     public function __construct()
     {
