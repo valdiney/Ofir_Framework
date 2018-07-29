@@ -1,21 +1,21 @@
 <?php
 
 $URI         = $_SERVER['REQUEST_URI'];
-$documentURI = $_SERVER['DOCUMENT_URI'];
+$scriptName = $_SERVER['SCRIPT_NAME'];
 
 # remove ? and # from URI
 $URI = preg_replace('/(.*)\?(.*)/', "$1", $URI);
 $URI = preg_replace('/(.*)\#(.*)/', "$1", $URI);
 
 # remove index.php fromt DOCUMENT_URI
-$documentURI = dirname($documentURI, 1);
+$scriptName = dirname($scriptName, 1);
 
 # removes the first part from URI.
 # that part is the folder before public
 # if the DOCUMENT_URI is not '/', in others words,
 # if the DOCUMENT_URI is not empty
-if ($documentURI!=='/') {
-    $URI = str_replace($documentURI, '', $URI);
+if ($scriptName!=='/') {
+    $URI = str_replace($scriptName, '', $URI);
 }
 # removes the first bar
 $URI = trim($URI, '/');
@@ -27,13 +27,14 @@ $PATH  = dirname($PATH, 2);
 $PATH .= "/";
 
 #
-$SCHEME = $_SERVER['REQUEST_SCHEME'];
+$SCHEME  = 'http';
+$SCHEME .= isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on'? 's': '';
 
 # lowered method
 $REQUEST_METHOD = strtolower($_SERVER['REQUEST_METHOD']);
 
 # get actual url
-$BASE = "{$SCHEME}://{$_SERVER['SERVER_NAME']}{$documentURI}";
+$BASE = "{$SCHEME}://{$_SERVER['SERVER_NAME']}{$scriptName}";
 # adds a final bar if not contains
 if ($BASE[strlen($BASE)-1] !== '/') {
     $BASE .= "/";

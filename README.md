@@ -74,6 +74,7 @@ Accessing the url `http://[site.example]/users/`, you will see the all users fro
 
 ## Changelog:
 
+- [v2.1.4](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.1.4)
 - [v2.1.3](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.1.3)
 - [v2.1.2](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.1.2)
 - [v2.1.1](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.1.1)
