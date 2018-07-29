@@ -80,7 +80,7 @@ Go to [composer website](https://getcomposer.org) and choose one option. If you 
 
 #### getting this project
 
-* You can download this project in a [zip file](https://github.com/valdiney/Ofir_Framework-0.1/archive/master.zip).
+* You can download this project in a [zip file](https://github.com/valdiney/Ofir_Framework/archive/master.zip).
 * You can clone this repo.
 * Or you can `fork this project`.
   * Enjoy to help us :wink:
@@ -89,7 +89,7 @@ Go to [composer website](https://getcomposer.org) and choose one option. If you 
 
 Download this project:
 
-> git clone https://github.com/valdiney/Ofir_Framework-0.1 ofir
+> git clone https://github.com/valdiney/Ofir_Framework ofir
 
 Then, put:
 
@@ -117,13 +117,13 @@ HOST_DBNAME=ofir
 
 All that you need to do is change the values for a other that you need.
 
-In case that you need to more explain about the `.env` file, you can read our explain of this in [env-file](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/env-file.md).
+In case that you need to more explain about the `.env` file, you can read our explain of this in [env-file](https://github.com/valdiney/Ofir_Framework/tree/master/docs/env-file.md).
 
 ### development environment
 
 The `APP_ENV` is about your `Development Enviroment`. \
 If you are in a local environment set it, if not you can set like: `production`, `test`...\
-You can see more about this file in [env-file](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/env-file.md).
+You can see more about this file in [env-file](https://github.com/valdiney/Ofir_Framework/tree/master/docs/env-file.md).
 ## It's all from now!
 
 Well, I think that it's all and you is ready to init your `Ofir Development`! :smiley:

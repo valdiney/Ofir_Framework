@@ -9,13 +9,13 @@ Ofir uses the Model-View-Controller approach, which allows great separation betw
 
 ## Instalation
 
-To get help in initializing you can see [our documentation for install](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md).\
-For example, you can work with [nginx](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#nginx) or [apache](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#apache).
+To get help in initializing you can see [our documentation for install](https://github.com/valdiney/Ofir_Framework/tree/master/docs/install.md).\
+For example, you can work with [nginx](https://github.com/valdiney/Ofir_Framework/tree/master/docs/install.md#nginx) or [apache](https://github.com/valdiney/Ofir_Framework/tree/master/docs/install.md#apache).
 
 We are using `composer` to load some packages and our classes (especially).\
-Get help to install composer in your machine ([installing composer](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#composer)).
+Get help to install composer in your machine ([installing composer](https://github.com/valdiney/Ofir_Framework/tree/master/docs/install.md#composer)).
 
-Copy the file `.env.sample` to `.env` and configure it, we writed a step-by-step then you can [see about the enviroment](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#environment). Then [configure your development environment](https://github.com/valdiney/Ofir_Framework-0.1/tree/master/docs/install.md#development-environment).
+Copy the file `.env.sample` to `.env` and configure it, we writed a step-by-step then you can [see about the enviroment](https://github.com/valdiney/Ofir_Framework/tree/master/docs/install.md#environment). Then [configure your development environment](https://github.com/valdiney/Ofir_Framework/tree/master/docs/install.md#development-environment).
 
 **I think that you are ready!**
 
@@ -74,9 +74,10 @@ Accessing the url `http://[site.example]/users/`, you will see the all users fro
 
 ## Changelog:
 
-- [v2.1.4](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.1.4)
-- [v2.1.3](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.1.3)
-- [v2.1.2](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.1.2)
-- [v2.1.1](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.1.1)
-- [v2.1.0](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v2.0.0)
-- [v1.0.0](https://github.com/valdiney/Ofir_Framework-0.1/releases/tag/v1.0.0) 
+- [v2.1.5](https://github.com/valdiney/Ofir_Framework/releases/tag/v2.1.5)
+- [v2.1.4](https://github.com/valdiney/Ofir_Framework/releases/tag/v2.1.4)
+- [v2.1.3](https://github.com/valdiney/Ofir_Framework/releases/tag/v2.1.3)
+- [v2.1.2](https://github.com/valdiney/Ofir_Framework/releases/tag/v2.1.2)
+- [v2.1.1](https://github.com/valdiney/Ofir_Framework/releases/tag/v2.1.1)
+- [v2.1.0](https://github.com/valdiney/Ofir_Framework/releases/tag/v2.0.0)
+- [v1.0.0](https://github.com/valdiney/Ofir_Framework/releases/tag/v1.0.0) 
