@@ -27,7 +27,8 @@ $PATH  = dirname($PATH, 2);
 $PATH .= "/";
 
 #
-$SCHEME = $_SERVER['REQUEST_SCHEME'];
+$SCHEME  = 'http';
+$SCHEME .= isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on'? 's': '';
 
 # lowered method
 $REQUEST_METHOD = strtolower($_SERVER['REQUEST_METHOD']);
