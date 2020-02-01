@@ -32,6 +32,7 @@ If you can help us, go to our issues (#41) and send a pull request.
 ### Example of the Model class:
 
 ```php
+use \Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     protected $table = 'user';
@@ -47,13 +48,13 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->users = $this->model('Users');
+        $this->users = new Users();
     }
 
     public function index()
     {
         $title = 'All users';
-        $users = $this->users->select()->getAll();
+        $users = $this->users->all();
         return $this->view('home.index', compact('title', 'users'));
     }
 }
