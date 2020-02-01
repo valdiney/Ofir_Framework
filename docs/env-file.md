@@ -30,7 +30,9 @@ HOST_DBNAME=ofir
 
 - APP_ENV: This says to Ofir about the actual enviroment. If the server is a local server, or a production etc.
 - TIMEZONE: Says to Ofir what is the timezone to uses.
-- HOST_*: These lines says to Ofir about the database configurations.
+
+  -DB_CONNECTION: The name of the database drive
+  - HOST_*: These lines says to Ofir about the database configurations.
   - NAME:     The name of your HOST (e.g.: localhost, 123.53.63.11).
   - USERNAME: The user of your host.
   - PASSWORD: The password, obviously.
