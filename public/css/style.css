@@ -5,22 +5,21 @@ body {
 .description {
     width:500px;
     padding:10px;
-    border:1px solid silver;
-    border-radius:3px;
     display:block;
     text-align:center;
     margin:auto;
-    background:white;
     color:#333333;
+    color:#44d192;
+    margin-top:50px;
+    background:white;
 }
 
 .conteiner {
     width:1000px;
     height:auto;
     min-height:100px;
-    background:white;
     margin:auto;
-    margin-top:10px;
+    margin-top:50px;
     padding:10px;
 }
 
@@ -32,7 +31,7 @@ h2 {
 }
 
 .title {
-    font-family:DengXian;
+    font-family:arial;
 }
 
 .description {

@@ -25,6 +25,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "vlucas/phpdotenv": "^2.5"
+        "vlucas/phpdotenv": "^2.5",
+        "illuminate/database": "~5.1"
     }
 }

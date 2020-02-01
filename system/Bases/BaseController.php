@@ -1,8 +1,6 @@
 <?php
-
 class BaseController
 {
-
     # to receive the values passed to view
     protected $data = array();
 
@@ -20,7 +18,7 @@ class BaseController
         if (class_exists($library)) {
             if ($usingDB) {
                 # Instantiante the class Library and passing the Database Connection
-                return $library = new $library(Database::connect());
+                return $library = new $library();
             }
 
             # Instantiante the class Library without passing the Database Connection
@@ -34,7 +32,7 @@ class BaseController
         # Verify if Model Exist
         if (class_exists($model)) {
             # Instantiante the class Library and passing the Database Connection
-            return new $model(Database::connect());
+            return new $model();
         }
         throw new Exception("The Model `{$model}` not exists!");
     }

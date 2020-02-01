@@ -1,4 +1,7 @@
 <?php
+
+use Illuminate\Database\Capsule\Manager as Capsule;
+
 /**
 * --------------------------------------------------------------------------
 * This class is used to make the connection with the database
@@ -6,37 +9,24 @@
 * @var $pdo : Object : Stored the instance of PDO
 */
 
-class Database
+class Database 
 {
-    private static $pdo;
+    function __construct() 
+    {
+        $capsule = new Capsule;
 
-    public static function connect() {
-        if (!isset($pdo)) {
-            try {
-				$host     = getenv('HOST_NAME');
-				$username = getenv('HOST_USERNAME');
-				$password = getenv('HOST_PASSWORD');
-				$dbname   = getenv('HOST_DBNAME');
-				self::$pdo = new PDO("mysql:" . "host={$host};dbname={$dbname}", $username, $password,
-					array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-            }
-            catch (PDOException $e) {
-                if ($e->getCode() == 2002) {
-                    echo "<b>Database configuration Error:</b> This Localhost not exist in this server";
-                    exit;
-                } elseif ($e->getCode() == 1049) {
-                    echo "<b>Database configuration Error:</b> This Database not exist in this server";
-                    exit;
-                } elseif ($e->getCode() == 1044) {
-                    echo "<b>Database configuration Error:</b> Database username not exist in this server";
-                    exit;
-                } elseif ($e->getCode() == 1045) {
-                    echo "<b>Database configuration Error:</b> Database Password are incorrect";
-                    exit;
-                }
-            }
-        }
+        $capsule->addConnection([
+            'driver' => getenv('DB_CONNECTION'),
+            'host' => getenv('HOST_NAME'),
+            'database' => getenv('HOST_DBNAME'),
+            'username' => getenv('HOST_USERNAME'),
+            'password' => getenv('HOST_PASSWORD'),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+        ], "default");
 
-        return self::$pdo;
+        // Setup the Eloquent ORM… 
+        $capsule->bootEloquent();
     }
 }
