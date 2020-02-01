@@ -19,6 +19,7 @@ Actualy the file look like:
 APP_ENV=local
 TIMEZONE=America/Sao_Paulo
 
+DB_CONNECTION=mysql
 HOST_NAME=localhost
 HOST_USERNAME=root
 HOST_PASSWORD=admin
