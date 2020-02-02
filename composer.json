@@ -17,7 +17,8 @@
             "system/",
             "sources/controllers/",
             "sources/models/",
-            "sources/services/"
+            "sources/services/",
+            "system/Helpers/"
         ],
         "psr-4": {
             "Ofir\\" : "system/"
