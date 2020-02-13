@@ -17,7 +17,8 @@
             "system/",
             "sources/controllers/",
             "sources/models/",
-            "sources/services/"
+            "sources/services/",
+            "system/Helpers/"
         ],
         "psr-4": {
             "Ofir\\" : "system/"
@@ -25,6 +26,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "vlucas/phpdotenv": "^2.5"
+        "vlucas/phpdotenv": "^2.5",
+        "illuminate/database": "~5.1"
     }
 }

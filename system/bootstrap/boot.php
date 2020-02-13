@@ -15,6 +15,12 @@ require_once("session-config.php");
 # includes the file resposible for define initial consts
 require_once("defines.php");
 
+# include the Database class
+require_once(__DIR__ . '/../Database/Database.php');
+
+# init the database eloquent class
+new Database();
+
 # init the Routing
 Route::init();
 
