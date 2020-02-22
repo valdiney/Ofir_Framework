@@ -1,0 +1,28 @@
+#!/usr/bin/env php
+<?php
+
+$args = array_slice($argv, 1);
+
+if (!isset($args[0])) {
+    exit('You need to pass some param!');
+}
+
+require "system/CLI/CLI.php";
+$CLI = new CLI;
+
+$method = $args[0];
+
+if ($method === 'help') {
+    call_user_func([$CLI, 'help']);
+    exit;
+}
+
+if ($method === 'create') {
+    if (!isset($args[0]) || !$args[0]) {
+        exit('You need to pass some param to `create` method.');
+    }
+    $name = $args[0];
+    $params = array_slice($args, 1);
+    call_user_func_array([$CLI, $name], $params);
+    exit;
+}
