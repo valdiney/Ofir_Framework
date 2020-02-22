@@ -78,6 +78,8 @@ Accessing the url `http://[site.example]/users/`, you will see the all users fro
 You can use `Ofir` in your command line interface (CLI). It's a beta functionallity ;)
 Send a pull request and help us!
 
+![Creating controller from Ofir CLI](docs/images/ofir-cli-1.png?raw=true "Creating controller from Ofir CLI")
+
 ````
 # display cli help
 php ofir help
