@@ -72,13 +72,3 @@ class UserController extends Controller
 ### then...
 
 Accessing the url `http://[site.example]/users/`, you will see the all users from you database.
-
-## Changelog:
-
-- [v2.1.5](https://github.com/valdiney/Ofir_Framework/releases/tag/v2.1.5)
-- [v2.1.4](https://github.com/valdiney/Ofir_Framework/releases/tag/v2.1.4)
-- [v2.1.3](https://github.com/valdiney/Ofir_Framework/releases/tag/v2.1.3)
-- [v2.1.2](https://github.com/valdiney/Ofir_Framework/releases/tag/v2.1.2)
-- [v2.1.1](https://github.com/valdiney/Ofir_Framework/releases/tag/v2.1.1)
-- [v2.1.0](https://github.com/valdiney/Ofir_Framework/releases/tag/v2.0.0)
-- [v1.0.0](https://github.com/valdiney/Ofir_Framework/releases/tag/v1.0.0) 
