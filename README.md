@@ -72,3 +72,25 @@ class UserController extends Controller
 ### then...
 
 Accessing the url `http://[site.example]/users/`, you will see the all users from you database.
+
+### Ofir CLI
+
+You can use `Ofir` in your command line interface (CLI). It's a beta functionallity ;)
+Send a pull request and help us!
+
+````
+# display cli help
+php ofir help
+
+# display create help
+php ofir create help
+
+# create a Ofir controller
+php ofir create controller [ControllerName]
+
+# create a Ofir service
+php ofir create service [ServiceName]
+
+# create a Ofir model
+php ofir create model [modelname]
+````
